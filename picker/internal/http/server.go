@@ -69,7 +69,9 @@ func (s *Server) Run(ctx context.Context) error {
 		return err
 	}
 
-	timeout, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	const shutdownTimeout = 5 * time.Second
+
+	timeout, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 	defer cancel()
 
 	if err := s.echo.Shutdown(timeout); err != nil {

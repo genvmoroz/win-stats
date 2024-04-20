@@ -52,6 +52,8 @@ const (
 
 func (st SensorType) Unit() Unit {
 	switch st {
+	case UnknownSensorType:
+		return UnknownUnit
 	case Voltage:
 		return Volt
 	case Clock:

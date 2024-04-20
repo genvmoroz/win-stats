@@ -2,6 +2,7 @@ package http
 
 import (
 	"fmt"
+
 	openapi "github.com/genvmoroz/win-stats-picker/internal/http/generated"
 	"github.com/labstack/echo/v4/middleware"
 	oapimiddleware "github.com/oapi-codegen/echo-middleware"

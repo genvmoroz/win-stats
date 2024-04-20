@@ -1,7 +1,7 @@
 include ../common.mk
 
 .PHONY: all
-all: gen_api gen_common gci ci
+all: gen_api gen_common gci ci build
 
 .PHONY: ci
 ci: test vulnerabilities_lookup lint

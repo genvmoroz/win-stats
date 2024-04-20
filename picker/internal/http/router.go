@@ -31,7 +31,10 @@ func NewRouter(srv Service) (*Router, error) {
 
 var _ openapi.StrictServerInterface = (*Router)(nil)
 
-func (r *Router) GetStats(ctx context.Context, _ openapi.GetStatsRequestObject) (openapi.GetStatsResponseObject, error) {
+func (r *Router) GetStats(
+	ctx context.Context,
+	_ openapi.GetStatsRequestObject,
+) (openapi.GetStatsResponseObject, error) {
 	stats, err := r.srv.GetStats(ctx)
 	if err != nil {
 		return openapi.GetStats500JSONResponse(wrapAPIError(err, http.StatusInternalServerError)), nil
@@ -42,7 +45,10 @@ func (r *Router) GetStats(ctx context.Context, _ openapi.GetStatsRequestObject) 
 	return openapi.GetStats200JSONResponse(resp), nil
 }
 
-func (r *Router) HealthCheck(_ context.Context, _ openapi.HealthCheckRequestObject) (openapi.HealthCheckResponseObject, error) {
+func (r *Router) HealthCheck(
+	_ context.Context,
+	_ openapi.HealthCheckRequestObject,
+) (openapi.HealthCheckResponseObject, error) {
 	return openapi.HealthCheck200TextResponse("Up and running!"), nil
 }
 
