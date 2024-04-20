@@ -1,0 +1,5 @@
+package: openapi
+generate:
+  client: true
+  models: true
+output: internal/repository/picker/generated/openapi.gen.go

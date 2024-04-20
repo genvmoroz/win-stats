@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  description: This is the API documentation for the Win Stats Picker API.
+  title: Win Stats Picker API
+  version: 1.0.0
+servers:
+  - url: "/"
+    description: API server
+paths:
+  /stats:
+    get:
+      summary: Returns a map of hardware stats.
+      operationId: GetStats
+      description: This endpoint returns a list of hardware stats.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stats'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /health:
+    get:
+      summary: Returns the health status of the API.
+      operationId: HealthCheck
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    Stats:
+      description: Describes a response to the GetStats endpoint
+      type: object
+      properties:
+        Hardware:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hardware'
+    Hardware:
+      description: Describes a hardware component
+      type: object
+      properties:
+        ID:
+          type: string
+        Name:
+          type: string
+        Type:
+          type: string
+        Sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sensor'
+    Sensor:
+      description: Describes a sensor
+      type: object
+      properties:
+        ID:
+          type: string
+        Name:
+          type: string
+        Type:
+          type: string
+        Value:
+          $ref: '#/components/schemas/SensorValue'
+    SensorValue:
+      description: Describes a sensor value
+      type: object
+      properties:
+        Value:
+          type: integer
+          format: int64
+        Timestamp:
+          type: integer
+          format: int64
+    Error:
+      description: Describes an error response
+      type: object
+      properties:
+        StatusCode:
+          type: integer
+          format: int32
+        Message:
+          type: string
