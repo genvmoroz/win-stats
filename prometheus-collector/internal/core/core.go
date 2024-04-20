@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"time"
 
+	retry "github.com/avast/retry-go/v4"
 	"github.com/samber/lo"
 )
 
@@ -19,6 +20,7 @@ type (
 
 	Config struct {
 		CollectInterval time.Duration `envconfig:"APP_COLLECT_INTERVAL" default:"1s"`
+		CollectAttempts uint          `envconfig:"APP_COLLECT_ATTEMPTS" default:"5"`
 	}
 
 	Service struct {
@@ -54,24 +56,39 @@ func (s *Service) Collect(ctx context.Context) error {
 		case <-ctx.Done():
 			return nil
 		case <-ticker.C:
-			stats, err := s.statsProvider.GetStats(ctx)
+			err := retry.Do(
+				func() error {
+					return s.collectStats(ctx)
+				},
+				retry.Attempts(s.cfg.CollectAttempts),
+				retry.Context(ctx),
+			)
 			if err != nil {
-				return fmt.Errorf("get stats: %w", err)
-			}
-
-			for _, hardware := range stats.Hardware {
-				for _, sensor := range hardware.Sensors {
-					s.statsReporter.ReportSensorValue(
-						sensor.Value.Value,
-						constructHardwareName(hardware),
-						hardware.Type,
-						constructSensorName(sensor),
-						sensor.Type,
-					)
-				}
+				return fmt.Errorf("successive retries to collect stats failed: %w", err)
 			}
 		}
 	}
+}
+
+func (s *Service) collectStats(ctx context.Context) error {
+	stats, err := s.statsProvider.GetStats(ctx)
+	if err != nil {
+		return fmt.Errorf("get stats: %w", err)
+	}
+
+	for _, hardware := range stats.Hardware {
+		for _, sensor := range hardware.Sensors {
+			s.statsReporter.ReportSensorValue(
+				sensor.Value.Value,
+				constructHardwareName(hardware),
+				hardware.Type,
+				constructSensorName(sensor),
+				sensor.Type,
+			)
+		}
+	}
+
+	return nil
 }
 
 func constructHardwareName(hardware Hardware) string {
