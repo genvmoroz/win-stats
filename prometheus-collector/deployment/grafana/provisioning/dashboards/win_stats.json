@@ -43,6 +43,7 @@
           },
           "mappings": [],
           "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -190,6 +191,7 @@
           },
           "mappings": [],
           "max": 50,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -263,6 +265,7 @@
           },
           "mappings": [],
           "max": 4100,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -272,11 +275,11 @@
               },
               {
                 "color": "semi-dark-yellow",
-                "value": 7
+                "value": 80
               },
               {
                 "color": "semi-dark-green",
-                "value": 80
+                "value": 90
               }
             ]
           },
@@ -314,6 +317,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "avg(sensor_value{hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed (/intelcpu/0/clock/0)\"})",
           "instant": false,
           "legendFormat": "{{sensorName}}",
@@ -795,8 +799,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -895,8 +898,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -995,8 +997,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1094,8 +1095,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1229,8 +1229,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1326,8 +1325,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1422,8 +1420,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1518,8 +1515,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1614,8 +1610,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1710,8 +1705,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1774,6 +1768,6 @@
   "timezone": "browser",
   "title": "Win Stats",
   "uid": "bdjbit726c7pcb",
-  "version": 1,
+  "version": 5,
   "weekStart": ""
 }
