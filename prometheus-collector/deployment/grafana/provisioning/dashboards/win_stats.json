@@ -94,7 +94,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Load\", sensorName=\"CPU Total (/intelcpu/0/load/0)\"}",
+          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Load\"})/7",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -563,16 +563,16 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
+                "color": "red",
                 "value": null
               },
               {
                 "color": "yellow",
-                "value": 80
+                "value": 50
               },
               {
-                "color": "dark-red",
-                "value": 90
+                "color": "green",
+                "value": 70
               }
             ]
           },
@@ -1767,7 +1767,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
