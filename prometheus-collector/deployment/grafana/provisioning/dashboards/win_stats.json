@@ -50,14 +50,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 90
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 95
               }
             ]
           },
@@ -116,13 +108,13 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 100,
+          "max": 4100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
+                "color": "semi-dark-red",
                 "value": null
               },
               {
@@ -130,12 +122,12 @@
                 "value": 80
               },
               {
-                "color": "dark-red",
+                "color": "semi-dark-green",
                 "value": 90
               }
             ]
           },
-          "unit": "celsius"
+          "unit": "rotmhz"
         },
         "overrides": []
       },
@@ -145,7 +137,7 @@
         "x": 6,
         "y": 1
       },
-      "id": 6,
+      "id": 18,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -169,14 +161,15 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\"})/7",
+          "exemplar": false,
+          "expr": "avg(sensor_value{hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed (/intelcpu/0/clock/0)\"})",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "CPU Temperature",
+      "title": "CPU Clock",
       "type": "gauge"
     },
     {
@@ -198,14 +191,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "semi-dark-yellow",
-                "value": 75
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 85
               }
             ]
           },
@@ -264,13 +249,13 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 4100,
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "semi-dark-red",
+                "color": "green",
                 "value": null
               },
               {
@@ -278,12 +263,12 @@
                 "value": 80
               },
               {
-                "color": "semi-dark-green",
+                "color": "dark-red",
                 "value": 90
               }
             ]
           },
-          "unit": "rotmhz"
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -293,7 +278,7 @@
         "x": 18,
         "y": 1
       },
-      "id": 18,
+      "id": 6,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -317,15 +302,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(sensor_value{hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed (/intelcpu/0/clock/0)\"})",
+          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\"})/7",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "CPU Clock",
+      "title": "CPU Temperature",
       "type": "gauge"
     },
     {
@@ -347,14 +331,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 80
-              },
-              {
-                "color": "dark-red",
-                "value": 90
               }
             ]
           },
@@ -413,26 +389,26 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 100,
+          "max": 1800,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
+                "color": "red",
                 "value": null
               },
               {
                 "color": "yellow",
-                "value": 70
+                "value": 20
               },
               {
-                "color": "dark-red",
-                "value": 80
+                "color": "green",
+                "value": 40
               }
             ]
           },
-          "unit": "celsius"
+          "unit": "rotmhz"
         },
         "overrides": []
       },
@@ -442,7 +418,7 @@
         "x": 6,
         "y": 7
       },
-      "id": 20,
+      "id": 22,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -456,7 +432,8 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
-        "sizing": "auto"
+        "sizing": "auto",
+        "text": {}
       },
       "pluginVersion": "10.4.2",
       "targets": [
@@ -466,14 +443,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\"}",
+          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Clock\", sensorName=\"GPU Core (/nvidiagpu/0/clock/0)\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "GPU Temperature",
+      "title": "GPU Clock",
       "type": "gauge"
     },
     {
@@ -495,14 +472,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 80
-              },
-              {
-                "color": "dark-red",
-                "value": 90
               }
             ]
           },
@@ -561,26 +530,26 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 1800,
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "green",
                 "value": null
               },
               {
                 "color": "yellow",
-                "value": 50
+                "value": 70
               },
               {
-                "color": "green",
-                "value": 70
+                "color": "dark-red",
+                "value": 80
               }
             ]
           },
-          "unit": "rotmhz"
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -590,7 +559,7 @@
         "x": 18,
         "y": 7
       },
-      "id": 22,
+      "id": 20,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -604,8 +573,7 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
-        "sizing": "auto",
-        "text": {}
+        "sizing": "auto"
       },
       "pluginVersion": "10.4.2",
       "targets": [
@@ -615,14 +583,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Clock\", sensorName=\"GPU Core (/nvidiagpu/0/clock/0)\"}",
+          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "GPU Clock",
+      "title": "GPU Temperature",
       "type": "gauge"
     },
     {
@@ -799,7 +767,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -898,7 +867,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1761,13 +1731,13 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Win Stats",
   "uid": "bdjbit726c7pcb",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }

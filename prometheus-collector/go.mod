@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/avast/retry-go/v4 v4.6.0
-	github.com/go-playground/validator/v10 v10.19.0
+	github.com/go-playground/validator/v10 v10.20.0
 	github.com/hashicorp/go-cleanhttp v0.5.2
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/labstack/echo-contrib v0.17.1
