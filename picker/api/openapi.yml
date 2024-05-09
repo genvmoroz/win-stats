@@ -13,24 +13,24 @@ paths:
       operationId: GetStats
       description: This endpoint returns a list of hardware stats.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Stats'
-        '500':
+                $ref: "#/components/schemas/Stats"
+        "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /health:
     get:
       summary: Returns the health status of the API.
       operationId: HealthCheck
       responses:
-        '200':
+        "200":
           description: OK
           content:
             text/plain:
@@ -45,7 +45,7 @@ components:
         Hardware:
           type: array
           items:
-            $ref: '#/components/schemas/Hardware'
+            $ref: "#/components/schemas/Hardware"
     Hardware:
       description: Describes a hardware component
       type: object
@@ -59,7 +59,7 @@ components:
         Sensors:
           type: array
           items:
-            $ref: '#/components/schemas/Sensor'
+            $ref: "#/components/schemas/Sensor"
     Sensor:
       description: Describes a sensor
       type: object
@@ -71,7 +71,7 @@ components:
         Type:
           type: string
         Value:
-          $ref: '#/components/schemas/SensorValue'
+          $ref: "#/components/schemas/SensorValue"
     SensorValue:
       description: Describes a sensor value
       type: object
