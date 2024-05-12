@@ -1,5 +1,3 @@
-services := picker,service
-
 .PHONY: gen_common
 gen_common:
 	go install golang.org/x/tools/cmd/stringer@latest

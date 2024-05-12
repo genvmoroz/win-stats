@@ -1,11 +1,10 @@
 package mem
 
 import (
+	"math/rand/v2"
 	"sync"
 	"testing"
 	"time"
-
-	"math/rand/v2"
 
 	"github.com/araddon/dateparse"
 	"github.com/genvmoroz/custom-collector/internal/core"
@@ -172,6 +171,7 @@ func TestStoreStoreAndGetValuesForRange(t *testing.T) {
 			t.Parallel()
 
 			r, err := NewStore(logrus.New())
+			require.NoError(t, err)
 			require.NotNil(t, r)
 
 			if tt.pre != nil {
