@@ -6,7 +6,10 @@ import (
 	"net"
 	"time"
 
+	openapi "github.com/genvmoroz/win-stats-picker/internal/http/generated"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+	oapimiddleware "github.com/oapi-codegen/echo-middleware"
 	"github.com/samber/lo"
 	"github.com/sirupsen/logrus"
 )
@@ -78,6 +81,20 @@ func (s *Server) Run(ctx context.Context) error {
 		return fmt.Errorf("shutdown http server: %w", err)
 	}
 	s.logger.Debug("http server stopped")
+
+	return nil
+}
+
+func (s *Server) register() error {
+	// register OpenAPI handlers
+	handler := openapi.NewStrictHandler(s.router, nil)
+	openapi.RegisterHandlers(s.echo, handler)
+	swagger, err := openapi.GetSwagger()
+	if err != nil {
+		return fmt.Errorf("get swagger: %w", err)
+	}
+	s.echo.Use(oapimiddleware.OapiRequestValidator(swagger))
+	s.echo.Use(middleware.Logger())
 
 	return nil
 }

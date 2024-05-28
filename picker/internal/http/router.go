@@ -15,8 +15,8 @@ type Service interface {
 }
 
 type Router struct {
-	srv Service
-	t   Transformer
+	srv         Service
+	transformer Transformer
 }
 
 func NewRouter(srv Service) (*Router, error) {
@@ -24,8 +24,8 @@ func NewRouter(srv Service) (*Router, error) {
 		return nil, fmt.Errorf("service is nil")
 	}
 	return &Router{
-		srv: srv,
-		t:   Transformer{},
+		srv:         srv,
+		transformer: Transformer{},
 	}, nil
 }
 
@@ -40,7 +40,7 @@ func (r *Router) GetStats(
 		return openapi.GetStats500JSONResponse(wrapAPIError(err, http.StatusInternalServerError)), nil
 	}
 
-	resp := r.t.GetStatsResponseFromCore(stats)
+	resp := r.transformer.GetStatsResponseFromCore(stats)
 
 	return openapi.GetStats200JSONResponse(resp), nil
 }
