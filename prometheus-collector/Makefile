@@ -20,5 +20,5 @@ test:
 
 .PHONY: gen_api
 gen_api:
-	go run github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest \
+	go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest \
 		-config internal/openapi/config.yml internal/openapi/openapi.yml
