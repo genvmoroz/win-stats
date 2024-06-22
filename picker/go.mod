@@ -3,8 +3,8 @@ module github.com/genvmoroz/win-stats-picker
 go 1.22
 
 require (
-	github.com/getkin/kin-openapi v0.124.0
-	github.com/go-playground/validator/v10 v10.21.0
+	github.com/getkin/kin-openapi v0.125.0
+	github.com/go-playground/validator/v10 v10.22.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/oapi-codegen/echo-middleware v1.0.2
