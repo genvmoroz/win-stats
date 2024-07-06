@@ -1,6 +1,5 @@
 cd prometheus-collector
 tolatest.exe go.mod
-make deps
 make all
 cd deployment
 docker-compose rm -f

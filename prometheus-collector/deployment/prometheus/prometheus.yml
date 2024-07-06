@@ -3,6 +3,6 @@ global:
   evaluation_interval: 1s
 
 scrape_configs:
-  - job_name: "prometheus-collector"
+  - job_name: "win-stats-prometheus-collector"
     static_configs:
-      - targets: ['prometheus-collector:8888']
+      - targets: ['win-stats-prometheus-collector:8888']

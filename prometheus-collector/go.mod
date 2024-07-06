@@ -11,7 +11,7 @@ require (
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/prometheus/client_golang v1.19.1
 	github.com/samber/do v1.6.0
-	github.com/samber/lo v1.39.0
+	github.com/samber/lo v1.44.0
 	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/sync v0.7.0
 )
@@ -33,10 +33,9 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.22.0 // indirect
-	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
 	golang.org/x/net v0.24.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 )

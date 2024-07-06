@@ -1,12 +1,12 @@
 services:
-  prometheus-collector:
+  win-stats-prometheus-collector:
     build:
       context: ..
     environment:
       APP_LOG_LEVEL: "DEBUG"
       APP_COLLECT_INTERVAL: "1s"
       APP_INFRA_SERVER_PORT: "8888"
-      APP_PICKER_REPO_HOST: "http://172.31.144.1:8080"
+      APP_PICKER_REPO_HOST: "http://172.26.64.1:8080"
 
   prometheus:
     image: prom/prometheus:latest
