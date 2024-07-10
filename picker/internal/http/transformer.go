@@ -20,12 +20,12 @@ func (t Transformer) GetStatsResponseFromCore(in core.GetStatsResponse) openapi.
 			continue
 		}
 
+		hw := t.hardwareFromCore(coreHW)
+
 		sensors := make([]openapi.Sensor, len(coreSensors))
 		for idx, coreSensor := range coreSensors {
 			sensors[idx] = t.sensorFromCore(coreSensor)
 		}
-
-		hw := t.hardwareFromCore(coreHW)
 		hw.Sensors = &sensors
 
 		hardware = append(hardware, hw)
