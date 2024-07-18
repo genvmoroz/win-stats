@@ -76,24 +76,22 @@ func execQueryWithContext[T any](ctx context.Context, execFunc func() (T, error)
 	default:
 	}
 
-	resChan := make(chan T, 1)
-	errChan := make(chan error, 1)
+	type result struct {
+		res T
+		err error
+	}
+
+	resultChan := make(chan result, 1)
 
 	go func() {
 		res, err := execFunc()
-		if err != nil {
-			errChan <- err
-		} else {
-			resChan <- res
-		}
+		resultChan <- result{res, err}
 	}()
 
 	select {
 	case <-ctx.Done():
 		return zero, ctx.Err()
-	case res := <-resChan:
-		return res, nil
-	case err := <-errChan:
-		return zero, err
+	case result := <-resultChan:
+		return result.res, result.err
 	}
 }
