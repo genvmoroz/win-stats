@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	wmi "github.com/yusufpapurcu/wmi"
+	"github.com/yusufpapurcu/wmi"
 )
 
 const (
@@ -33,8 +33,8 @@ func (r *Repo) GetSensors(ctx context.Context, opts ...SensorFilter) ([]Sensor, 
 	return execQueryWithContext[[]Sensor](ctx, r.getSensors(opts...))
 }
 
-func (r *Repo) getHardware(opts ...HardwareFilter) func(resChan chan []Hardware, errChan chan error) {
-	return func(resChan chan []Hardware, errChan chan error) {
+func (r *Repo) getHardware(opts ...HardwareFilter) func() ([]Hardware, error) {
+	return func() ([]Hardware, error) {
 		query := selectHardwareQuery
 		condition := narrowHardwareQuery(opts...)
 		if len(condition) != 0 {
@@ -43,15 +43,15 @@ func (r *Repo) getHardware(opts ...HardwareFilter) func(resChan chan []Hardware,
 
 		var res []Hardware
 		if err := r.queryExecutor(query, &res, namespace); err != nil {
-			errChan <- fmt.Errorf("exec query: %w", err)
+			return nil, err
 		} else {
-			resChan <- res
+			return res, nil
 		}
 	}
 }
 
-func (r *Repo) getSensors(opts ...SensorFilter) func(resChan chan []Sensor, errChan chan error) {
-	return func(resChan chan []Sensor, errChan chan error) {
+func (r *Repo) getSensors(opts ...SensorFilter) func() ([]Sensor, error) {
+	return func() ([]Sensor, error) {
 		query := selectSensorsQuery
 		condition := narrowSensorsQuery(opts...)
 		if len(condition) != 0 {
@@ -60,14 +60,14 @@ func (r *Repo) getSensors(opts ...SensorFilter) func(resChan chan []Sensor, errC
 
 		var res []Sensor
 		if err := r.queryExecutor(query, &res, namespace); err != nil {
-			errChan <- fmt.Errorf("exec query: %w", err)
+			return nil, err
 		} else {
-			resChan <- res
+			return res, nil
 		}
 	}
 }
 
-func execQueryWithContext[T any](ctx context.Context, execFunc func(resChan chan T, errChan chan error)) (T, error) {
+func execQueryWithContext[T any](ctx context.Context, execFunc func() (T, error)) (T, error) {
 	var zero T
 
 	select {
@@ -79,7 +79,14 @@ func execQueryWithContext[T any](ctx context.Context, execFunc func(resChan chan
 	resChan := make(chan T, 1)
 	errChan := make(chan error, 1)
 
-	go execFunc(resChan, errChan)
+	go func() {
+		res, err := execFunc()
+		if err != nil {
+			errChan <- err
+		} else {
+			resChan <- res
+		}
+	}()
 
 	select {
 	case <-ctx.Done():
