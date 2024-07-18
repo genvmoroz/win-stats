@@ -44,9 +44,8 @@ func (r *Repo) getHardware(opts ...HardwareFilter) func() ([]Hardware, error) {
 		var res []Hardware
 		if err := r.queryExecutor(query, &res, namespace); err != nil {
 			return nil, err
-		} else {
-			return res, nil
 		}
+		return res, nil
 	}
 }
 
@@ -61,9 +60,8 @@ func (r *Repo) getSensors(opts ...SensorFilter) func() ([]Sensor, error) {
 		var res []Sensor
 		if err := r.queryExecutor(query, &res, namespace); err != nil {
 			return nil, err
-		} else {
-			return res, nil
 		}
+		return res, nil
 	}
 }
 
@@ -91,7 +89,7 @@ func execQueryWithContext[T any](ctx context.Context, execFunc func() (T, error)
 	select {
 	case <-ctx.Done():
 		return zero, ctx.Err()
-	case result := <-resultChan:
-		return result.res, result.err
+	case out := <-resultChan:
+		return out.res, out.err
 	}
 }
