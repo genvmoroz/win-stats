@@ -20,3 +20,7 @@ gci:
 upgrade_deps:
 	go run github.com/genvmoroz/tolatest@latest \
  		./go.mod
+
+tidy:
+	go mod tidy
+	go mod verify

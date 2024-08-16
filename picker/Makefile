@@ -1,14 +1,10 @@
 include ../common.mk
 
 .PHONY: all
-all: deps gen_api gen_common gci ci build
+all: tidy gen_api gen_common gci ci build
 
 .PHONY: ci
 ci: test vulnerabilities_lookup lint
-
-deps:
-	go mod tidy
-	go mod verify
 
 .PHONY: build
 build:
