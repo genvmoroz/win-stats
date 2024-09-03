@@ -1,4 +1,4 @@
 cd picker
-tolatest.exe go.mod
+go get -u -t ./...
 make all
 app.exe

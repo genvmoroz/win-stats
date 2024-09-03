@@ -1,5 +1,5 @@
 # image for compiling binary
-ARG BUILDER_IMAGE="golang:1.22-alpine"
+ARG BUILDER_IMAGE="golang:1.23-alpine"
 # here we'll run binary app
 ARG RUNNER_IMAGE="alpine:3.19.1"
 
