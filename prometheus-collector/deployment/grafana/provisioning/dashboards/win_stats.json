@@ -58,7 +58,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 0,
         "y": 1
@@ -79,7 +79,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -132,7 +132,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 6,
         "y": 1
@@ -153,7 +153,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -199,7 +199,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 12,
         "y": 1
@@ -220,7 +220,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -273,7 +273,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 18,
         "y": 1
@@ -294,7 +294,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -339,10 +339,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 0,
-        "y": 7
+        "y": 6
       },
       "id": 15,
       "options": {
@@ -360,7 +360,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -413,10 +413,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 6,
-        "y": 7
+        "y": 6
       },
       "id": 22,
       "options": {
@@ -435,7 +435,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -480,10 +480,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 12,
-        "y": 7
+        "y": 6
       },
       "id": 21,
       "options": {
@@ -501,7 +501,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -554,10 +554,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 6,
         "x": 18,
-        "y": 7
+        "y": 6
       },
       "id": 20,
       "options": {
@@ -575,7 +575,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.1.1",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -610,6 +610,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -659,9 +660,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 13
+        "y": 11
       },
       "id": 16,
       "options": {
@@ -724,6 +725,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -767,10 +769,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 21
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 11
       },
       "id": 23,
       "options": {
@@ -840,7 +842,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 19
       },
       "id": 2,
       "panels": [],
@@ -864,6 +866,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -912,7 +915,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 31
+        "y": 20
       },
       "id": 3,
       "options": {
@@ -962,6 +965,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1013,7 +1017,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 31
+        "y": 20
       },
       "id": 5,
       "options": {
@@ -1063,6 +1067,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1114,7 +1119,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 28
       },
       "id": 1,
       "options": {
@@ -1167,6 +1172,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1239,7 +1245,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 39
+        "y": 28
       },
       "id": 4,
       "options": {
@@ -1278,7 +1284,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 36
       },
       "id": 7,
       "panels": [],
@@ -1302,6 +1308,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1333,7 +1340,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1349,7 +1357,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 48
+        "y": 37
       },
       "id": 9,
       "options": {
@@ -1398,6 +1406,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1429,7 +1438,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1445,7 +1455,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 48
+        "y": 37
       },
       "id": 13,
       "options": {
@@ -1494,6 +1504,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1524,7 +1535,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1540,7 +1552,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 48
+        "y": 37
       },
       "id": 12,
       "options": {
@@ -1589,6 +1601,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1619,7 +1632,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1635,7 +1649,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 55
+        "y": 44
       },
       "id": 8,
       "options": {
@@ -1684,6 +1698,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1714,7 +1729,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1730,7 +1746,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 55
+        "y": 44
       },
       "id": 10,
       "options": {
@@ -1779,6 +1795,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 10,
             "gradientMode": "none",
@@ -1809,7 +1826,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1825,7 +1843,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 55
+        "y": 44
       },
       "id": 11,
       "options": {
