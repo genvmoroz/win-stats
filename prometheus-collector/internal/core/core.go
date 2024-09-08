@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	retry "github.com/avast/retry-go/v4"
+	"github.com/avast/retry-go/v4"
 	"github.com/samber/lo"
 )
 
