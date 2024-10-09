@@ -13,6 +13,7 @@ require (
 	github.com/samber/lo v1.47.0
 	github.com/sirupsen/logrus v1.9.3
 	github.com/yusufpapurcu/wmi v1.2.4
+	go.uber.org/automaxprocs v1.6.0
 	golang.org/x/sync v0.8.0
 )
 

@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/genvmoroz/win-stats-picker/internal/dependency"
+	_ "go.uber.org/automaxprocs"
 	"golang.org/x/sync/errgroup"
 )
 
