@@ -24,6 +24,7 @@ func MustBuild() Dependency {
 	do.Provide(injector, NewConfig)
 	do.Provide(injector, NewLogger)
 	do.Provide(injector, NewStatsRepo)
+	do.Provide(injector, NewCachedStatsRepo)
 	do.Provide(injector, NewCoreService)
 	do.Provide(injector, NewRouter)
 	do.Provide(injector, NewHTTPServer)
@@ -41,6 +42,15 @@ func NewStatsRepo(injector *do.Injector) (*stats.Repo, error) {
 	timeGenerator := do.MustInvoke[*timegen.TimeGenerator](injector)
 
 	return stats.NewRepo(timeGenerator)
+}
+
+func NewCachedStatsRepo(injector *do.Injector) (*stats.CachedRepo, error) {
+	var (
+		cfg      = do.MustInvoke[config.Config](injector)
+		baseRepo = do.MustInvoke[*stats.Repo](injector)
+	)
+
+	return stats.NewCachedRepo(baseRepo, cfg.CachedRepo)
 }
 
 func NewRouter(injector *do.Injector) (*http.Router, error) {
@@ -77,7 +87,7 @@ func NewHTTPServer(injector *do.Injector) (*http.Server, error) {
 }
 
 func NewCoreService(injector *do.Injector) (*core.Service, error) {
-	statsRepo := do.MustInvoke[*stats.Repo](injector)
+	cachedStatsRepo := do.MustInvoke[*stats.CachedRepo](injector)
 
-	return core.NewService(statsRepo)
+	return core.NewService(cachedStatsRepo)
 }

@@ -16,7 +16,7 @@ import (
 
 type (
 	Config struct {
-		Port uint `envconfig:"APP_HTTP_API_PORT" default:"8080"`
+		Port uint `envconfig:"APP_HTTP_SERVER_PORT" default:"8080"`
 	}
 
 	Server struct {

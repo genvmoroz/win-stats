@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/genvmoroz/win-stats-picker/internal/http"
+	"github.com/genvmoroz/win-stats-picker/internal/repository/stats"
 	"github.com/go-playground/validator/v10"
 	"github.com/kelseyhightower/envconfig"
 )
@@ -12,6 +13,7 @@ type Config struct {
 	LogLevel string `envconfig:"APP_LOG_LEVEL" default:"info"`
 
 	HTTPServer http.Config
+	CachedRepo stats.CachedRepoConfig
 }
 
 func FromEnv() (Config, error) {
