@@ -6,3 +6,4 @@ cd deployment
 docker-compose rm -f
 docker-compose pull
 docker-compose up --force-recreate --build -d
+exit
