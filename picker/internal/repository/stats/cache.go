@@ -32,6 +32,7 @@ func NewCachedRepo(baseRepo core.StatsRepo, cfg CachedRepoConfig) (*CachedRepo, 
 	}, nil
 }
 
+// todo: implement a test for this method, try to use RWMutex instead of Mutex
 func (c *CachedRepo) GetSensorsByHardware(ctx context.Context) (map[core.Hardware][]core.Sensor, error) {
 	c.mux.Lock()
 	defer c.mux.Unlock()
