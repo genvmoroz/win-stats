@@ -88,6 +88,6 @@ components:
       properties:
         StatusCode:
           type: integer
-          format: int32
+          format: int64
         Message:
           type: string

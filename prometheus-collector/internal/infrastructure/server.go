@@ -71,7 +71,7 @@ func (s *Server) Run(ctx context.Context) error {
 
 	const shutdownTimeout = 2 * time.Second
 
-	timeout, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
+	timeout, cancel := context.WithTimeout(context.Background(), shutdownTimeout) //nolint:contextcheck // false-positive: https://github.com/kkHAIKE/contextcheck/issues/2
 	defer cancel()
 
 	if err := s.echo.Shutdown(timeout); err != nil {

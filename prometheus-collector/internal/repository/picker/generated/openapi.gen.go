@@ -16,7 +16,7 @@ import (
 // Error Describes an error response
 type Error struct {
 	Message    *string `json:"Message,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty"`
+	StatusCode *int64  `json:"StatusCode,omitempty"`
 }
 
 // Hardware Describes a hardware component

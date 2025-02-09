@@ -49,6 +49,6 @@ func (r *Router) HealthCheck(_ context.Context, _ openapi.HealthCheckRequestObje
 func newAPIError(statusCode int, err error) openapi.Error {
 	return openapi.Error{
 		Message:    lo.ToPtr(err.Error()),
-		StatusCode: lo.ToPtr(int32(statusCode)),
+		StatusCode: lo.ToPtr(int64(statusCode)),
 	}
 }
