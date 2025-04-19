@@ -668,9 +668,9 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\", sensorName=\"CPU Package (/intelcpu/0/temperature/6)\"}",
+          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"AMD Ryzen 7 9700X\"}",
           "instant": false,
-          "legendFormat": "CPU",
+          "legendFormat": "CPU {{sensorName}}",
           "range": true,
           "refId": "A"
         },
@@ -680,10 +680,10 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\"}",
+          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "GPU",
+          "legendFormat": "{{sensorName}}",
           "range": true,
           "refId": "B"
         }
@@ -783,10 +783,10 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", sensorName=\"CPU Package (/intelcpu/0/power/0)\"}",
+          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName=\"Package\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "CPU",
+          "legendFormat": "CPU {{sensorName}}",
           "range": true,
           "refId": "A"
         },
@@ -796,12 +796,13 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Power\"}",
+          "exemplar": false,
+          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName=\"GPU Package\"}",
           "hide": false,
           "instant": false,
-          "legendFormat": "GPU",
+          "legendFormat": "{{sensorName}}",
           "range": true,
-          "refId": "B"
+          "refId": "C"
         },
         {
           "datasource": {
@@ -809,13 +810,12 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", sensorName=\"CPU Package (/intelcpu/0/power/0)\"})+sum(sensor_value{hardwareType=\"GPU\", sensorType=\"Power\"})",
+          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName=\"Package\"}) + sum(sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName=\"GPU Package\"})",
           "hide": false,
           "instant": false,
           "legendFormat": "Total",
           "range": true,
-          "refId": "C"
+          "refId": "B"
         }
       ],
       "title": "CPU/GPU Power Consumption",
@@ -5023,5 +5023,5 @@
   "timezone": "browser",
   "title": "Win Stats",
   "uid": "bdjbit726c7pcb",
-  "version": 1
+  "version": 3
 }
