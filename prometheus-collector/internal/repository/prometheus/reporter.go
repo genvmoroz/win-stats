@@ -7,8 +7,10 @@ import (
 )
 
 const (
+	hardwareIDLabel   = "hardwareID"
 	hardwareNameLabel = "hardwareName"
 	hardwareTypeLabel = "hardwareType"
+	sensorIDLabel     = "sensorID"
 	sensorNameLabel   = "sensorName"
 	sensorTypeLabel   = "sensorType"
 )
@@ -24,7 +26,7 @@ func NewStatsReporter() *StatsReporter {
 				Name: "sensor_value",
 				Help: "Sensor value",
 			},
-			[]string{hardwareNameLabel, hardwareTypeLabel, sensorNameLabel, sensorTypeLabel},
+			[]string{hardwareIDLabel, hardwareNameLabel, hardwareTypeLabel, sensorIDLabel, sensorNameLabel, sensorTypeLabel},
 		),
 	}
 }
@@ -37,12 +39,14 @@ func (r *StatsReporter) Register() error {
 	return nil
 }
 
-func (r *StatsReporter) ReportSensorValue(value int64, hardwareName, hardwareType, sensorName, sensorType string) {
+func (r *StatsReporter) ReportSensorValue(value int64, hardwareID, hardwareName, hardwareType, sensorID, sensorName, sensorType string) {
 	r.sensorValueGaugeVec.
 		With(
 			map[string]string{
+				hardwareIDLabel:   hardwareID,
 				hardwareNameLabel: hardwareName,
 				hardwareTypeLabel: hardwareType,
+				sensorIDLabel:     sensorID,
 				sensorNameLabel:   sensorName,
 				sensorTypeLabel:   sensorType,
 			},

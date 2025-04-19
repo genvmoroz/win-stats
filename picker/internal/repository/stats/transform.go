@@ -55,13 +55,13 @@ func (r *Repo) toCoreSensor(in ohm.Sensor) (core.Sensor, error) {
 
 func toCoreHardwareType(in ohm.HardwareType) (core.HardwareType, error) {
 	switch in {
-	case ohm.Mainboard:
+	case ohm.Mainboard, ohm.Motherboard:
 		return core.Motherboard, nil
 	case ohm.SuperIO:
 		return core.SuperIO, nil
 	case ohm.CPU:
 		return core.CPU, nil
-	case ohm.GpuNvidia, ohm.GpuAti:
+	case ohm.GpuNvidia, ohm.GpuAti, ohm.GpuAmd:
 		return core.GPU, nil
 	case ohm.TBalancer:
 		return core.TBalancer, nil
@@ -71,6 +71,12 @@ func toCoreHardwareType(in ohm.HardwareType) (core.HardwareType, error) {
 		return core.HDD, nil
 	case ohm.RAM:
 		return core.RAM, nil
+	case ohm.Network:
+		return core.Network, nil
+	case ohm.Memory:
+		return core.Memory, nil
+	case ohm.Storage:
+		return core.Storage, nil
 	default:
 		return core.UnknownHardwareType, fmt.Errorf("unknown hardware type: %s", in)
 	}
@@ -102,6 +108,8 @@ func toCoreSensorType(in ohm.SensorType) (core.SensorType, error) {
 		return core.Throughput, nil
 	case ohm.Data:
 		return core.Data, nil
+	case ohm.Factor:
+		return core.Factor, nil
 	default:
 		return core.UnknownSensorType, fmt.Errorf("unknown sensor type: %s", in)
 	}

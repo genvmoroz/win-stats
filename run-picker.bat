@@ -1,6 +1,7 @@
 cd picker
 go fmt ./...
 go get -u -t ./...
-make all
+go mod tidy
+go build -o ./app.exe ./cmd/service
 start /MIN app.exe ^& exit
 exit

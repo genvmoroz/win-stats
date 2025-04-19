@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	namespace           = "root\\OpenHardwareMonitor"
+	namespace           = "root\\LibreHardwareMonitor"
 	selectHardwareQuery = "SELECT * FROM Hardware"
 	selectSensorsQuery  = "SELECT * FROM Sensor"
 )

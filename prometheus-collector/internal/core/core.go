@@ -11,7 +11,7 @@ import (
 
 type (
 	StatsReporter interface {
-		ReportSensorValue(value int64, hardwareName, hardwareType, sensorName, sensorType string)
+		ReportSensorValue(value int64, hardwareID, hardwareName, hardwareType, sensorID, sensorName, sensorType string)
 	}
 
 	StatsProvider interface {
@@ -80,21 +80,15 @@ func (s *Service) collectStats(ctx context.Context) error {
 		for _, sensor := range hardware.Sensors {
 			s.statsReporter.ReportSensorValue(
 				sensor.Value.Value,
-				constructHardwareName(hardware),
+				hardware.ID,
+				hardware.Name,
 				hardware.Type,
-				constructSensorName(sensor),
+				sensor.ID,
+				sensor.Name,
 				sensor.Type,
 			)
 		}
 	}
 
 	return nil
-}
-
-func constructHardwareName(hardware Hardware) string {
-	return fmt.Sprintf("%s (%s)", hardware.Name, hardware.ID)
-}
-
-func constructSensorName(sensor Sensor) string {
-	return fmt.Sprintf("%s (%s)", sensor.Name, sensor.ID)
 }

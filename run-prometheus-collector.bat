@@ -1,7 +1,7 @@
 cd prometheus-collector
 go fmt ./...
 go get -u -t ./...
-make all
+go mod tidy
 cd deployment
 docker-compose rm -f
 docker-compose pull

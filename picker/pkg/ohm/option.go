@@ -43,30 +43,6 @@ func narrowSensorsQuery(opts ...SensorFilter) string {
 	return condition.String()
 }
 
-func SensorsWithIdentifier(val string) SensorFilter {
-	return func(filter *SensorFilters) {
-		filter.Identifier = &val
-	}
-}
-
-func SensorsWithName(val string) SensorFilter {
-	return func(filter *SensorFilters) {
-		filter.Name = &val
-	}
-}
-
-func SensorsWithType(val SensorType) SensorFilter {
-	return func(filter *SensorFilters) {
-		filter.Type = &val
-	}
-}
-
-func SensorsWithParentIdentifier(val string) SensorFilter {
-	return func(filter *SensorFilters) {
-		filter.ParentIdentifier = &val
-	}
-}
-
 type HardwareFilters struct {
 	Type *HardwareType
 }
@@ -91,12 +67,6 @@ func narrowHardwareQuery(opts ...HardwareFilter) string {
 	}
 
 	return condition.String()
-}
-
-func HardwareWithType(val HardwareType) HardwareFilter {
-	return func(filter *HardwareFilters) {
-		filter.Type = &val
-	}
 }
 
 type conditionQuery struct {

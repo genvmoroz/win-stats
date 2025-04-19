@@ -6,7 +6,6 @@ type HardwareType int
 
 const (
 	UnknownHardwareType HardwareType = iota
-	Motherboard
 	SuperIO
 	CPU
 	GPU
@@ -14,6 +13,10 @@ const (
 	HeatMaster
 	HDD
 	RAM
+	Network
+	Memory
+	Storage
+	Motherboard
 )
 
 type SensorType int
@@ -32,6 +35,7 @@ const (
 	SmallData
 	Throughput
 	Data
+	Factor
 )
 
 type Unit int

@@ -9,19 +9,22 @@ func _() {
 	// Re-run the stringer command to generate them again.
 	var x [1]struct{}
 	_ = x[UnknownHardwareType-0]
-	_ = x[Motherboard-1]
-	_ = x[SuperIO-2]
-	_ = x[CPU-3]
-	_ = x[GPU-4]
-	_ = x[TBalancer-5]
-	_ = x[HeatMaster-6]
-	_ = x[HDD-7]
-	_ = x[RAM-8]
+	_ = x[SuperIO-1]
+	_ = x[CPU-2]
+	_ = x[GPU-3]
+	_ = x[TBalancer-4]
+	_ = x[HeatMaster-5]
+	_ = x[HDD-6]
+	_ = x[RAM-7]
+	_ = x[Network-8]
+	_ = x[Memory-9]
+	_ = x[Storage-10]
+	_ = x[Motherboard-11]
 }
 
-const _HardwareType_name = "UnknownHardwareTypeMotherboardSuperIOCPUGPUTBalancerHeatMasterHDDRAM"
+const _HardwareType_name = "UnknownHardwareTypeSuperIOCPUGPUTBalancerHeatMasterHDDRAMNetworkMemoryStorageMotherboard"
 
-var _HardwareType_index = [...]uint8{0, 19, 30, 37, 40, 43, 52, 62, 65, 68}
+var _HardwareType_index = [...]uint8{0, 19, 26, 29, 32, 41, 51, 54, 57, 64, 70, 77, 88}
 
 func (i HardwareType) String() string {
 	if i < 0 || i >= HardwareType(len(_HardwareType_index)-1) {
@@ -46,11 +49,12 @@ func _() {
 	_ = x[SmallData-10]
 	_ = x[Throughput-11]
 	_ = x[Data-12]
+	_ = x[Factor-13]
 }
 
-const _SensorType_name = "UnknownSensorTypeVoltageClockTemperatureLoadFanFlowControlLevelPowerSmallDataThroughputData"
+const _SensorType_name = "UnknownSensorTypeVoltageClockTemperatureLoadFanFlowControlLevelPowerSmallDataThroughputDataFactor"
 
-var _SensorType_index = [...]uint8{0, 17, 24, 29, 40, 44, 47, 51, 58, 63, 68, 77, 87, 91}
+var _SensorType_index = [...]uint8{0, 17, 24, 29, 40, 44, 47, 51, 58, 63, 68, 77, 87, 91, 97}
 
 func (i SensorType) String() string {
 	if i < 0 || i >= SensorType(len(_SensorType_index)-1) {

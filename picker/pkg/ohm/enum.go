@@ -3,15 +3,20 @@ package ohm
 type HardwareType string
 
 const (
-	Mainboard  HardwareType = "Mainboard"
-	SuperIO    HardwareType = "SuperIO"
-	CPU        HardwareType = "CPU"
-	GpuNvidia  HardwareType = "GpuNvidia"
-	GpuAti     HardwareType = "GpuAti"
-	TBalancer  HardwareType = "TBalancer"
-	HeatMaster HardwareType = "HeatMaster"
-	HDD        HardwareType = "HDD"
-	RAM        HardwareType = "RAM"
+	Mainboard   HardwareType = "Mainboard"
+	SuperIO     HardwareType = "SuperIO"
+	CPU         HardwareType = "Cpu"
+	GpuNvidia   HardwareType = "GpuNvidia"
+	GpuAti      HardwareType = "GpuAti"
+	GpuAmd      HardwareType = "GpuAmd"
+	TBalancer   HardwareType = "TBalancer"
+	HeatMaster  HardwareType = "HeatMaster"
+	HDD         HardwareType = "HDD"
+	RAM         HardwareType = "RAM"
+	Network     HardwareType = "Network"
+	Memory      HardwareType = "Memory"
+	Storage     HardwareType = "Storage"
+	Motherboard HardwareType = "Motherboard"
 )
 
 type SensorType string
@@ -29,4 +34,5 @@ const (
 	SmallData   SensorType = "SmallData"  // ?
 	Throughput  SensorType = "Throughput" // ?
 	Data        SensorType = "Data"       // ?
+	Factor      SensorType = "Factor"
 )
