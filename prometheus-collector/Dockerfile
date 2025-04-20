@@ -1,5 +1,5 @@
 # image for compiling svcary
-ARG BUILDER_IMAGE="golang:1.23-alpine"
+ARG BUILDER_IMAGE="golang:1.24-alpine"
 # here we'll run svcary app
 ARG RUNNER_IMAGE="alpine:3.19.1"
 
