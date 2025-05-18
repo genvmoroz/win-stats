@@ -81,7 +81,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -145,7 +145,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -211,7 +211,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -284,7 +284,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -349,7 +349,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -415,7 +415,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -480,7 +480,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -553,7 +553,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -636,7 +636,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
         "x": 0,
         "y": 11
@@ -660,7 +660,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -751,7 +751,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
         "x": 12,
         "y": 11
@@ -775,7 +775,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -827,7 +827,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "id": 2,
       "panels": [
@@ -1248,7 +1248,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 21
       },
       "id": 7,
       "panels": [
@@ -2048,7 +2048,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 22
       },
       "id": 35,
       "panels": [
@@ -2652,7 +2652,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 23
       },
       "id": 26,
       "panels": [
@@ -2962,7 +2962,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 29,
       "panels": [
@@ -3268,7 +3268,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 25
       },
       "id": 32,
       "panels": [
@@ -3578,7 +3578,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "id": 48,
       "panels": [
@@ -3789,7 +3789,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 27
       },
       "id": 56,
       "panels": [
@@ -4197,7 +4197,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "id": 51,
       "panels": [
@@ -4605,7 +4605,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 29
       },
       "id": 61,
       "panels": [
@@ -5023,5 +5023,5 @@
   "timezone": "browser",
   "title": "Win Stats",
   "uid": "bdjbit726c7pcb",
-  "version": 3
+  "version": 1
 }
