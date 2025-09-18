@@ -27,14 +27,15 @@ type (
 	}
 )
 
-func NewServer(cfg Config, router *Router, logger logrus.FieldLogger) (*Server, error) {
+func NewServer(ctx context.Context, cfg Config, router *Router, logger logrus.FieldLogger) (*Server, error) {
 	if lo.IsNil(router) {
 		return nil, fmt.Errorf("router is nil")
 	}
 	if lo.IsNil(logger) {
 		return nil, fmt.Errorf("logger is nil")
 	}
-	ln, err := net.Listen("tcp", fmt.Sprintf(":%d", cfg.Port))
+	l := net.ListenConfig{}
+	ln, err := l.Listen(ctx, "tcp", fmt.Sprintf(":%d", cfg.Port))
 	if err != nil {
 		return nil, fmt.Errorf("can't listen on port %d: %w", cfg.Port, err)
 	}

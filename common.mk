@@ -9,7 +9,7 @@ vulnerabilities_lookup:
 	govulncheck -test ./...
 
 lint:
-	go run github.com/golangci/golangci-lint/cmd/golangci-lint@latest \
+	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest \
 		run --allow-parallel-runners -c ../.golangci.yml
 
 .PHONY: gci
@@ -18,8 +18,7 @@ gci:
 		write . --skip-generated
 
 upgrade_deps:
-	go run github.com/genvmoroz/tolatest@latest \
- 		./go.mod
+	go get -u ./...
 
 tidy:
 	go mod tidy

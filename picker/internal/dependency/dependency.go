@@ -1,6 +1,7 @@
 package dependency
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/genvmoroz/win-stats-picker/internal/config"
@@ -16,7 +17,7 @@ type Dependency struct {
 	httpServer *http.Server
 }
 
-func MustBuild() Dependency {
+func MustBuild(ctx context.Context) Dependency {
 	injector := do.DefaultInjector
 
 	do.ProvideValue(injector, timegen.NewTimeGenerator())
@@ -27,7 +28,7 @@ func MustBuild() Dependency {
 	do.Provide(injector, NewCachedStatsRepo)
 	do.Provide(injector, NewCoreService)
 	do.Provide(injector, NewRouter)
-	do.Provide(injector, NewHTTPServer)
+	do.Provide(injector, NewHTTPServer(ctx))
 
 	return Dependency{
 		httpServer: do.MustInvoke[*http.Server](injector),
@@ -76,14 +77,16 @@ func NewLogger(injector *do.Injector) (logrus.FieldLogger, error) {
 	return logger, nil
 }
 
-func NewHTTPServer(injector *do.Injector) (*http.Server, error) {
-	var (
-		cfg    = do.MustInvoke[config.Config](injector)
-		router = do.MustInvoke[*http.Router](injector)
-		logger = do.MustInvoke[logrus.FieldLogger](injector)
-	)
+func NewHTTPServer(ctx context.Context) func(injector *do.Injector) (*http.Server, error) {
+	return func(injector *do.Injector) (*http.Server, error) {
+		var (
+			cfg    = do.MustInvoke[config.Config](injector)
+			router = do.MustInvoke[*http.Router](injector)
+			logger = do.MustInvoke[logrus.FieldLogger](injector)
+		)
 
-	return http.NewServer(cfg.HTTPServer, router, logger)
+		return http.NewServer(ctx, cfg.HTTPServer, router, logger)
+	}
 }
 
 func NewCoreService(injector *do.Injector) (*core.Service, error) {

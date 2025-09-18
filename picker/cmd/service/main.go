@@ -32,7 +32,7 @@ func start(ctx context.Context) (err error) {
 		}
 	}()
 
-	deps := dependency.MustBuild()
+	deps := dependency.MustBuild(ctx)
 
 	group, ctx := errgroup.WithContext(ctx)
 
