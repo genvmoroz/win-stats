@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/genvmoroz/win-stats-picker/internal/core"
-	"github.com/genvmoroz/win-stats-picker/pkg/ohm"
+	"github.com/genvmoroz/win-stats/picker/internal/core"
+	"github.com/genvmoroz/win-stats/picker/pkg/ohm"
 )
 
 func (r *Repo) toCoreHardware(in []ohm.Hardware) ([]core.Hardware, error) {

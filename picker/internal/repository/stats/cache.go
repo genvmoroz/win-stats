@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/genvmoroz/win-stats-picker/internal/core"
+	"github.com/genvmoroz/win-stats/picker/internal/core"
 	"github.com/samber/lo"
 )
 

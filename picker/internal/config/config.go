@@ -3,8 +3,8 @@ package config
 import (
 	"fmt"
 
-	"github.com/genvmoroz/win-stats-picker/internal/http"
-	"github.com/genvmoroz/win-stats-picker/internal/repository/stats"
+	"github.com/genvmoroz/win-stats/picker/internal/http"
+	"github.com/genvmoroz/win-stats/picker/internal/repository/stats"
 	"github.com/go-playground/validator/v10"
 	"github.com/kelseyhightower/envconfig"
 )

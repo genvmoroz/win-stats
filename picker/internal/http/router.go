@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/genvmoroz/win-stats-picker/internal/core"
-	openapi "github.com/genvmoroz/win-stats-picker/internal/http/generated"
+	"github.com/genvmoroz/win-stats/picker/internal/core"
+	openapi "github.com/genvmoroz/win-stats/picker/internal/http/generated"
 	"github.com/samber/lo"
 )
 

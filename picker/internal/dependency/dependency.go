@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/genvmoroz/win-stats-picker/internal/config"
-	"github.com/genvmoroz/win-stats-picker/internal/core"
-	"github.com/genvmoroz/win-stats-picker/internal/http"
-	"github.com/genvmoroz/win-stats-picker/internal/repository/stats"
-	"github.com/genvmoroz/win-stats-picker/internal/repository/timegen"
+	"github.com/genvmoroz/win-stats/picker/internal/config"
+	"github.com/genvmoroz/win-stats/picker/internal/core"
+	"github.com/genvmoroz/win-stats/picker/internal/http"
+	"github.com/genvmoroz/win-stats/picker/internal/repository/stats"
+	"github.com/genvmoroz/win-stats/picker/internal/repository/timegen"
 	"github.com/samber/do"
 	"github.com/sirupsen/logrus"
 )

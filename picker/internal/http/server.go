@@ -6,7 +6,7 @@ import (
 	"net"
 	"time"
 
-	openapi "github.com/genvmoroz/win-stats-picker/internal/http/generated"
+	openapi "github.com/genvmoroz/win-stats/picker/internal/http/generated"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	oapimiddleware "github.com/oapi-codegen/echo-middleware"

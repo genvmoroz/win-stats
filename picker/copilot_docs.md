@@ -62,7 +62,7 @@ Dependencies are managed using Go modules (`go.mod`). The project imports severa
 - `os/signal`
 - `runtime/debug`
 - `syscall`
-- `github.com/genvmoroz/win-stats-picker/internal/dependency`
+- `github.com/genvmoroz/win-stats/picker/internal/dependency`
 - `golang.org/x/sync/errgroup`
 
 ## Grafana Dashboard

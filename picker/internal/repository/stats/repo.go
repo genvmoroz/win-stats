@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/genvmoroz/win-stats-picker/internal/core"
-	"github.com/genvmoroz/win-stats-picker/pkg/ohm"
+	"github.com/genvmoroz/win-stats/picker/internal/core"
+	"github.com/genvmoroz/win-stats/picker/pkg/ohm"
 	"github.com/samber/lo"
 )
 

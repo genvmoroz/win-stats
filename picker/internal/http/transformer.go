@@ -1,8 +1,8 @@
 package http
 
 import (
-	"github.com/genvmoroz/win-stats-picker/internal/core"
-	openapi "github.com/genvmoroz/win-stats-picker/internal/http/generated"
+	"github.com/genvmoroz/win-stats/picker/internal/core"
+	openapi "github.com/genvmoroz/win-stats/picker/internal/http/generated"
 	"github.com/samber/lo"
 )
 

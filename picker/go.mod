@@ -1,4 +1,4 @@
-module github.com/genvmoroz/win-stats-picker
+module github.com/genvmoroz/win-stats/picker
 
 go 1.24.0
 
