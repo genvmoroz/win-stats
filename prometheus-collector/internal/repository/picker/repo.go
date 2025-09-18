@@ -13,7 +13,7 @@ import (
 type (
 	Config struct {
 		Host    string        `envconfig:"APP_PICKER_REPO_HOST" validate:"required"`
-		Timeout time.Duration `envconfig:"APP_PICKER_REPO_TIMEOUT" default:"15s"`
+		Timeout time.Duration `envconfig:"APP_PICKER_REPO_TIMEOUT" default:"5m"`
 	}
 
 	Repo struct {
