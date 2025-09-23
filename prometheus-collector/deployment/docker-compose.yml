@@ -2,6 +2,7 @@ services:
   win-stats-prometheus-collector:
     build:
       context: ..
+    restart: always
     environment:
       APP_LOG_LEVEL: "DEBUG"
       APP_COLLECT_INTERVAL: "1s"
@@ -22,6 +23,7 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    restart: always
     ports:
       - "3000:3000"
     volumes:
