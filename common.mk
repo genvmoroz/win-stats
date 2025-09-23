@@ -20,6 +20,6 @@ gci:
 upgrade_deps:
 	go get -u ./...
 
-tidy:
+deps:
 	go mod tidy
 	go mod verify
