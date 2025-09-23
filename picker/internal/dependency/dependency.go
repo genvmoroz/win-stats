@@ -25,6 +25,7 @@ func MustBuild(ctx context.Context) Dependency {
 	do.Provide(injector, NewConfig)
 	do.Provide(injector, NewLogger)
 	do.Provide(injector, NewStatsRepo)
+	do.Provide(injector, NewSingleflightStatsRepo)
 	do.Provide(injector, NewCachedStatsRepo)
 	do.Provide(injector, NewCoreService)
 	do.Provide(injector, NewRouter)
@@ -45,13 +46,19 @@ func NewStatsRepo(injector *do.Injector) (*stats.Repo, error) {
 	return stats.NewRepo(timeGenerator)
 }
 
+func NewSingleflightStatsRepo(injector *do.Injector) (*stats.SingleflightRepo, error) {
+	baseRepo := do.MustInvoke[*stats.Repo](injector)
+
+	return stats.NewSingleflightRepo(baseRepo)
+}
+
 func NewCachedStatsRepo(injector *do.Injector) (*stats.CachedRepo, error) {
 	var (
-		cfg      = do.MustInvoke[config.Config](injector)
-		baseRepo = do.MustInvoke[*stats.Repo](injector)
+		cfg              = do.MustInvoke[config.Config](injector)
+		singleflightRepo = do.MustInvoke[*stats.SingleflightRepo](injector)
 	)
 
-	return stats.NewCachedRepo(baseRepo, cfg.CachedRepo)
+	return stats.NewCachedRepo(singleflightRepo, cfg.CachedRepo)
 }
 
 func NewRouter(injector *do.Injector) (*http.Router, error) {

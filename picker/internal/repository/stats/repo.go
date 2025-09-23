@@ -46,7 +46,6 @@ func (r *Repo) GetSensorsByHardware(ctx context.Context) (map[core.Hardware][]co
 	}
 
 	result := make(map[core.Hardware][]core.Sensor, len(hardware))
-
 	for _, hw := range hardware {
 		for _, sensor := range transformedSensors {
 			if sensor.HardwareID == hw.ID {
