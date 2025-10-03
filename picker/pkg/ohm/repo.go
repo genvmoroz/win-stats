@@ -26,11 +26,11 @@ func NewRepo() *Repo {
 }
 
 func (r *Repo) GetHardware(ctx context.Context, opts ...HardwareFilter) ([]Hardware, error) {
-	return execQueryWithContext[[]Hardware](ctx, r.getHardware(opts...))
+	return execQueryWithContext(ctx, r.getHardware(opts...))
 }
 
 func (r *Repo) GetSensors(ctx context.Context, opts ...SensorFilter) ([]Sensor, error) {
-	return execQueryWithContext[[]Sensor](ctx, r.getSensors(opts...))
+	return execQueryWithContext(ctx, r.getSensors(opts...))
 }
 
 func (r *Repo) getHardware(opts ...HardwareFilter) func() ([]Hardware, error) {
