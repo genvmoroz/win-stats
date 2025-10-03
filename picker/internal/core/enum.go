@@ -18,7 +18,6 @@ const (
 	Storage
 	Motherboard
 	Battery
-	Energy
 )
 
 type SensorType int
@@ -38,6 +37,7 @@ const (
 	Throughput
 	Data
 	Factor
+	Energy
 )
 
 type Unit int

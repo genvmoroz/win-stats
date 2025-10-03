@@ -21,12 +21,11 @@ func _() {
 	_ = x[Storage-10]
 	_ = x[Motherboard-11]
 	_ = x[Battery-12]
-	_ = x[Energy-13]
 }
 
-const _HardwareType_name = "UnknownHardwareTypeSuperIOCPUGPUTBalancerHeatMasterHDDRAMNetworkMemoryStorageMotherboardBatteryEnergy"
+const _HardwareType_name = "UnknownHardwareTypeSuperIOCPUGPUTBalancerHeatMasterHDDRAMNetworkMemoryStorageMotherboardBattery"
 
-var _HardwareType_index = [...]uint8{0, 19, 26, 29, 32, 41, 51, 54, 57, 64, 70, 77, 88, 95, 101}
+var _HardwareType_index = [...]uint8{0, 19, 26, 29, 32, 41, 51, 54, 57, 64, 70, 77, 88, 95}
 
 func (i HardwareType) String() string {
 	if i < 0 || i >= HardwareType(len(_HardwareType_index)-1) {
@@ -52,11 +51,12 @@ func _() {
 	_ = x[Throughput-11]
 	_ = x[Data-12]
 	_ = x[Factor-13]
+	_ = x[Energy-14]
 }
 
-const _SensorType_name = "UnknownSensorTypeVoltageClockTemperatureLoadFanFlowControlLevelPowerSmallDataThroughputDataFactor"
+const _SensorType_name = "UnknownSensorTypeVoltageClockTemperatureLoadFanFlowControlLevelPowerSmallDataThroughputDataFactorEnergy"
 
-var _SensorType_index = [...]uint8{0, 17, 24, 29, 40, 44, 47, 51, 58, 63, 68, 77, 87, 91, 97}
+var _SensorType_index = [...]uint8{0, 17, 24, 29, 40, 44, 47, 51, 58, 63, 68, 77, 87, 91, 97, 103}
 
 func (i SensorType) String() string {
 	if i < 0 || i >= SensorType(len(_SensorType_index)-1) {

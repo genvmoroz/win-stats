@@ -97,8 +97,6 @@ func toCoreHardwareType(in ohm.HardwareType) (core.HardwareType, error) {
 		return core.Storage, nil
 	case ohm.Battery:
 		return core.Battery, nil
-	case ohm.Energy:
-		return core.Energy, nil
 	default:
 		return core.UnknownHardwareType, fmt.Errorf("unknown hardware type: %s", in)
 	}
@@ -132,6 +130,8 @@ func toCoreSensorType(in ohm.SensorType) (core.SensorType, error) {
 		return core.Data, nil
 	case ohm.Factor:
 		return core.Factor, nil
+	case ohm.Energy:
+		return core.Energy, nil
 	default:
 		return core.UnknownSensorType, fmt.Errorf("unknown sensor type: %s", in)
 	}
