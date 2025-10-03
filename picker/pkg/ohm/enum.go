@@ -9,6 +9,7 @@ const (
 	GpuNvidia   HardwareType = "GpuNvidia"
 	GpuAti      HardwareType = "GpuAti"
 	GpuAmd      HardwareType = "GpuAmd"
+	GpuIntel    HardwareType = "GpuIntel"
 	TBalancer   HardwareType = "TBalancer"
 	HeatMaster  HardwareType = "HeatMaster"
 	HDD         HardwareType = "HDD"
