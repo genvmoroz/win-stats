@@ -20,11 +20,13 @@ func _() {
 	_ = x[Memory-9]
 	_ = x[Storage-10]
 	_ = x[Motherboard-11]
+	_ = x[Battery-12]
+	_ = x[Energy-13]
 }
 
-const _HardwareType_name = "UnknownHardwareTypeSuperIOCPUGPUTBalancerHeatMasterHDDRAMNetworkMemoryStorageMotherboard"
+const _HardwareType_name = "UnknownHardwareTypeSuperIOCPUGPUTBalancerHeatMasterHDDRAMNetworkMemoryStorageMotherboardBatteryEnergy"
 
-var _HardwareType_index = [...]uint8{0, 19, 26, 29, 32, 41, 51, 54, 57, 64, 70, 77, 88}
+var _HardwareType_index = [...]uint8{0, 19, 26, 29, 32, 41, 51, 54, 57, 64, 70, 77, 88, 95, 101}
 
 func (i HardwareType) String() string {
 	if i < 0 || i >= HardwareType(len(_HardwareType_index)-1) {

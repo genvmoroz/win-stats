@@ -1,6 +1,7 @@
 package stats
 
 import (
+	"errors"
 	"fmt"
 	"math"
 
@@ -9,37 +10,54 @@ import (
 )
 
 func (r *Repo) toCoreHardware(in []ohm.Hardware) ([]core.Hardware, error) {
-	out := make([]core.Hardware, len(in))
-	for i, h := range in {
+	out := make([]core.Hardware, 0, len(in))
+	var errs []error
+	for _, h := range in {
 		t, err := toCoreHardwareType(h.HardwareType)
 		if err != nil {
-			return nil, fmt.Errorf("transform hardware type: %w", err)
+			errs = append(errs, err)
+			continue
 		}
-		out[i] = core.Hardware{
-			ID:   core.HardwareID(h.Identifier),
-			Name: h.Name,
-			Type: t,
-		}
+		out = append(out,
+			core.Hardware{
+				ID:   core.HardwareID(h.Identifier),
+				Name: h.Name,
+				Type: t,
+			},
+		)
 	}
+
+	if len(errs) > 0 {
+		return nil, errors.Join(errs...)
+	}
+
 	return out, nil
 }
 
 func (r *Repo) toCoreSensors(in []ohm.Sensor) ([]core.Sensor, error) {
-	out := make([]core.Sensor, len(in))
-	for i, s := range in {
+	out := make([]core.Sensor, 0, len(in))
+	var errs []error
+
+	for _, s := range in {
 		transformed, err := r.toCoreSensor(s)
 		if err != nil {
-			return nil, fmt.Errorf("transform sensor: %w", err)
+			errs = append(errs, err)
+			continue
 		}
-		out[i] = transformed
+		out = append(out, transformed)
 	}
+
+	if len(errs) > 0 {
+		return nil, errors.Join(errs...)
+	}
+
 	return out, nil
 }
 
 func (r *Repo) toCoreSensor(in ohm.Sensor) (core.Sensor, error) {
 	t, err := toCoreSensorType(in.SensorType)
 	if err != nil {
-		return core.Sensor{}, fmt.Errorf("transform sensor type: %w", err)
+		return core.Sensor{}, err
 	}
 	return core.Sensor{
 		ID:         core.SensorID(in.Identifier),
@@ -79,6 +97,8 @@ func toCoreHardwareType(in ohm.HardwareType) (core.HardwareType, error) {
 		return core.Storage, nil
 	case ohm.Battery:
 		return core.Battery, nil
+	case ohm.Energy:
+		return core.Energy, nil
 	default:
 		return core.UnknownHardwareType, fmt.Errorf("unknown hardware type: %s", in)
 	}
