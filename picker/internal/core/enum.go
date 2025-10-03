@@ -17,6 +17,7 @@ const (
 	Memory
 	Storage
 	Motherboard
+	Battery
 )
 
 type SensorType int

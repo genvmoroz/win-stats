@@ -77,6 +77,8 @@ func toCoreHardwareType(in ohm.HardwareType) (core.HardwareType, error) {
 		return core.Memory, nil
 	case ohm.Storage:
 		return core.Storage, nil
+	case ohm.Battery:
+		return core.Battery, nil
 	default:
 		return core.UnknownHardwareType, fmt.Errorf("unknown hardware type: %s", in)
 	}

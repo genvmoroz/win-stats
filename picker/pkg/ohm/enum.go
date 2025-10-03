@@ -18,6 +18,7 @@ const (
 	Memory      HardwareType = "Memory"
 	Storage     HardwareType = "Storage"
 	Motherboard HardwareType = "Motherboard"
+	Battery     HardwareType = "Battery"
 )
 
 type SensorType string
