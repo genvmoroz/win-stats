@@ -61,7 +61,7 @@ func toCoreHardwareType(in ohm.HardwareType) (core.HardwareType, error) {
 		return core.SuperIO, nil
 	case ohm.CPU:
 		return core.CPU, nil
-	case ohm.GpuNvidia, ohm.GpuAti, ohm.GpuAmd:
+	case ohm.GpuNvidia, ohm.GpuAti, ohm.GpuAmd, ohm.GpuIntel:
 		return core.GPU, nil
 	case ohm.TBalancer:
 		return core.TBalancer, nil
