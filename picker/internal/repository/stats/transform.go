@@ -132,6 +132,8 @@ func toCoreSensorType(in ohm.SensorType) (core.SensorType, error) {
 		return core.Factor, nil
 	case ohm.Energy:
 		return core.Energy, nil
+	case ohm.Current:
+		return core.Current, nil
 	default:
 		return core.UnknownSensorType, fmt.Errorf("unknown sensor type: %s", in)
 	}

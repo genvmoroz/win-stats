@@ -38,6 +38,7 @@ const (
 	Data
 	Factor
 	Energy
+	Current
 )
 
 type Unit int

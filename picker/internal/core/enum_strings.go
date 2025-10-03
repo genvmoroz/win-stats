@@ -52,11 +52,12 @@ func _() {
 	_ = x[Data-12]
 	_ = x[Factor-13]
 	_ = x[Energy-14]
+	_ = x[Current-15]
 }
 
-const _SensorType_name = "UnknownSensorTypeVoltageClockTemperatureLoadFanFlowControlLevelPowerSmallDataThroughputDataFactorEnergy"
+const _SensorType_name = "UnknownSensorTypeVoltageClockTemperatureLoadFanFlowControlLevelPowerSmallDataThroughputDataFactorEnergyCurrent"
 
-var _SensorType_index = [...]uint8{0, 17, 24, 29, 40, 44, 47, 51, 58, 63, 68, 77, 87, 91, 97, 103}
+var _SensorType_index = [...]uint8{0, 17, 24, 29, 40, 44, 47, 51, 58, 63, 68, 77, 87, 91, 97, 103, 110}
 
 func (i SensorType) String() string {
 	if i < 0 || i >= SensorType(len(_SensorType_index)-1) {

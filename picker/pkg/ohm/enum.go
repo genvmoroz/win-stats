@@ -38,4 +38,5 @@ const (
 	Data        SensorType = "Data"       // ?
 	Factor      SensorType = "Factor"
 	Energy      SensorType = "Energy"
+	Current     SensorType = "Current"
 )
