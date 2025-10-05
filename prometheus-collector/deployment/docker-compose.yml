@@ -8,6 +8,7 @@ services:
       APP_COLLECT_INTERVAL: "1s"
       APP_INFRA_SERVER_PORT: "8888"
       APP_PICKER_REPO_HOST: "http://host.docker.internal:8080"
+      # APP_PICKER_REPO_HOST: "http://192.168.50.161:8080"
 
   prometheus:
     image: prom/prometheus:latest
