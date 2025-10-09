@@ -1,3 +1,4 @@
+// Package core contains domain logic for collecting and reporting stats.
 package core
 
 import (
@@ -7,11 +8,12 @@ import (
 
 	"github.com/avast/retry-go/v4"
 	"github.com/samber/lo"
+	"go.uber.org/zap"
 )
 
 type (
 	StatsReporter interface {
-		ReportSensorValue(value int64, hardwareID, hardwareName, hardwareType, sensorID, sensorName, sensorType string)
+		ReportSensorValue(value int64, host, hardwareID, hardwareName, hardwareType, sensorID, sensorName, sensorType string)
 	}
 
 	StatsProvider interface {
@@ -24,26 +26,31 @@ type (
 	}
 
 	Service struct {
-		cfg           Config
-		statsReporter StatsReporter
-		statsProvider StatsProvider
+		cfg            Config
+		logger         *zap.SugaredLogger
+		statsReporter  StatsReporter
+		statsProviders map[string]StatsProvider
 	}
 )
 
-func NewService(cfg Config, statsReporter StatsReporter, statsProvider StatsProvider) (*Service, error) {
+func NewService(cfg Config, logger *zap.SugaredLogger, statsReporter StatsReporter, statsProviders map[string]StatsProvider) (*Service, error) {
 	if lo.IsNil(statsReporter) {
 		return nil, fmt.Errorf("stats reporter is nil")
 	}
-	if lo.IsNil(statsProvider) {
-		return nil, fmt.Errorf("stats provider is nil")
+	if lo.IsNil(logger) {
+		return nil, fmt.Errorf("logger is nil")
+	}
+	if len(statsProviders) == 0 {
+		return nil, fmt.Errorf("stats providers list is empty")
 	}
 	if cfg.CollectInterval <= 0 {
 		return nil, fmt.Errorf("collect interval must be greater than 0")
 	}
 	return &Service{
-		cfg:           cfg,
-		statsReporter: statsReporter,
-		statsProvider: statsProvider,
+		cfg:            cfg,
+		logger:         logger,
+		statsReporter:  statsReporter,
+		statsProviders: statsProviders,
 	}, nil
 }
 
@@ -56,22 +63,29 @@ func (s *Service) Collect(ctx context.Context) error {
 		case <-ctx.Done():
 			return nil
 		case <-ticker.C:
-			err := retry.Do(
-				func() error {
-					return s.collectStats(ctx)
-				},
-				retry.Attempts(s.cfg.CollectAttempts),
-				retry.Context(ctx),
-			)
-			if err != nil {
-				return fmt.Errorf("successive retries to collect stats failed: %w", err)
+			for host, statsProvider := range s.statsProviders {
+				go func(host string, statsProvider StatsProvider) {
+					reqCtx, cancel := context.WithTimeout(ctx, time.Minute)
+					defer cancel()
+
+					err := retry.Do(
+						func() error {
+							return s.collectStats(reqCtx, host, statsProvider)
+						},
+						retry.Attempts(s.cfg.CollectAttempts),
+						retry.Context(reqCtx),
+					)
+					if err != nil {
+						s.logger.Errorf("successive retries to collect stats failed: %v", err)
+					}
+				}(host, statsProvider)
 			}
 		}
 	}
 }
 
-func (s *Service) collectStats(ctx context.Context) error {
-	stats, err := s.statsProvider.GetStats(ctx)
+func (s *Service) collectStats(ctx context.Context, host string, statsProvider StatsProvider) error {
+	stats, err := statsProvider.GetStats(ctx)
 	if err != nil {
 		return fmt.Errorf("get stats: %w", err)
 	}
@@ -80,6 +94,7 @@ func (s *Service) collectStats(ctx context.Context) error {
 		for _, sensor := range hardware.Sensors {
 			s.statsReporter.ReportSensorValue(
 				sensor.Value.Value,
+				host,
 				hardware.ID,
 				hardware.Name,
 				hardware.Type,

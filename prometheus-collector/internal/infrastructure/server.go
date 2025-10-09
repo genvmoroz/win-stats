@@ -1,3 +1,4 @@
+// Package infrastructure contains infrastructure-layer components like HTTP server.
 package infrastructure
 
 import (
@@ -10,7 +11,7 @@ import (
 	"github.com/labstack/echo-contrib/pprof"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/sirupsen/logrus"
+	"go.uber.org/zap"
 )
 
 type Config struct {
@@ -20,10 +21,10 @@ type Config struct {
 type Server struct {
 	cfg    Config
 	echo   *echo.Echo
-	logger logrus.FieldLogger
+	logger *zap.SugaredLogger
 }
 
-func NewServer(cfg Config, logger logrus.FieldLogger) (*Server, error) {
+func NewServer(cfg Config, logger *zap.SugaredLogger) (*Server, error) {
 	if cfg.ServerPort == 0 {
 		return nil, fmt.Errorf("server port is not set")
 	}

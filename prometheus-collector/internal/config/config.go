@@ -2,19 +2,21 @@ package config
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/core"
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/infrastructure"
-	"github.com/genvmoroz/win-stats-prometheus-collector/internal/repository/picker"
 	"github.com/go-playground/validator/v10"
 	"github.com/kelseyhightower/envconfig"
 )
 
 type Config struct {
-	LogLevel    string `envconfig:"APP_LOG_LEVEL" default:"debug"`
+	LogLevel       string        `envconfig:"APP_LOG_LEVEL" default:"debug"`
+	CollectTimeout time.Duration `envconfig:"APP_COLLECT_TIMEOUT" default:"10s"`
+	PickerHosts    []string      `envconfig:"APP_PICKER_HOSTS" validate:"required"`
+
 	CoreService core.Config
 	Infra       infrastructure.Config
-	Picker      picker.Config
 }
 
 func ReadFromEnv() (Config, error) {

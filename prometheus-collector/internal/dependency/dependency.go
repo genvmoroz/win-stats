@@ -1,3 +1,4 @@
+// Package dependency wires the application dependencies using a simple DI container.
 package dependency
 
 import (
@@ -10,7 +11,8 @@ import (
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/repository/picker"
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/repository/prometheus"
 	"github.com/samber/do"
-	"github.com/sirupsen/logrus"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
 type Dependency struct {
@@ -25,7 +27,7 @@ func MustBuild(ctx context.Context) *Dependency {
 	do.Provide(injector, NewLogger)
 	do.Provide(injector, NewInfraServer)
 	do.Provide(injector, NewPrometheusStatsReporter)
-	do.Provide(injector, NewStatsPickerRepo(ctx))
+	do.Provide(injector, NewStatsPickerRepos(ctx))
 	do.Provide(injector, NewCoreService)
 
 	return &Dependency{
@@ -44,11 +46,12 @@ func (d *Dependency) GetInfraServer() *infrastructure.Server {
 
 func NewCoreService(injector *do.Injector) (*core.Service, error) {
 	var (
-		cfg           = do.MustInvoke[config.Config](injector)
-		statsReporter = do.MustInvoke[*prometheus.StatsReporter](injector)
-		statsProvider = do.MustInvoke[*picker.Repo](injector)
+		cfg            = do.MustInvoke[config.Config](injector)
+		logger         = do.MustInvoke[*zap.SugaredLogger](injector)
+		statsReporter  = do.MustInvoke[*prometheus.StatsReporter](injector)
+		statsProviders = do.MustInvoke[map[string]core.StatsProvider](injector)
 	)
-	return core.NewService(cfg.CoreService, statsReporter, statsProvider)
+	return core.NewService(cfg.CoreService, logger, statsReporter, statsProviders)
 }
 
 func NewConfig(_ *do.Injector) (config.Config, error) {
@@ -70,30 +73,51 @@ func NewPrometheusStatsReporter(_ *do.Injector) (*prometheus.StatsReporter, erro
 	return reporter, nil
 }
 
-func NewStatsPickerRepo(ctx context.Context) func(injector *do.Injector) (*picker.Repo, error) {
-	return func(injector *do.Injector) (*picker.Repo, error) {
+func NewStatsPickerRepos(ctx context.Context) func(injector *do.Injector) (map[string]core.StatsProvider, error) {
+	return func(injector *do.Injector) (map[string]core.StatsProvider, error) {
+		logger := do.MustInvoke[*zap.SugaredLogger](injector)
 		cfg := do.MustInvoke[config.Config](injector)
-		return picker.NewRepo(ctx, cfg.Picker)
+
+		providers := make(map[string]core.StatsProvider, len(cfg.PickerHosts))
+		for _, host := range cfg.PickerHosts {
+			repo, err := picker.NewRepo(ctx, host, cfg.CollectTimeout)
+			if err != nil {
+				return nil, fmt.Errorf("init picker repo for host %s: %w", host, err)
+			}
+			if err = repo.HealthCheck(ctx); err != nil {
+				// it's ok to continue if health check fails,
+				// it's not a critical problem if one of the hosts is down,
+				// it will be reported in the next collection cycle
+				logger.Errorf("health check failed for host %s: %v", host, err)
+			}
+			providers[host] = repo
+		}
+
+		return providers, nil
 	}
 }
 
 func NewInfraServer(injector *do.Injector) (*infrastructure.Server, error) {
 	var (
 		cfg    = do.MustInvoke[config.Config](injector)
-		logger = do.MustInvoke[logrus.FieldLogger](injector)
+		logger = do.MustInvoke[*zap.SugaredLogger](injector)
 	)
 	return infrastructure.NewServer(cfg.Infra, logger)
 }
 
-func NewLogger(injector *do.Injector) (logrus.FieldLogger, error) {
+func NewLogger(injector *do.Injector) (*zap.SugaredLogger, error) {
 	cfg := do.MustInvoke[config.Config](injector)
 
-	logger := logrus.New()
-	lvl, err := logrus.ParseLevel(cfg.LogLevel)
+	level, err := zapcore.ParseLevel(cfg.LogLevel)
 	if err != nil {
-		return nil, fmt.Errorf("parser log level: %w", err)
+		return nil, fmt.Errorf("parse log level: %w", err)
 	}
-	logger.SetLevel(lvl)
 
-	return logger, nil
+	zapCfg := zap.NewProductionConfig()
+	zapCfg.Level = zap.NewAtomicLevelAt(level)
+	base, err := zapCfg.Build()
+	if err != nil {
+		return nil, fmt.Errorf("build zap logger: %w", err)
+	}
+	return base.Sugar(), nil
 }

@@ -1,3 +1,4 @@
+// Package prometheus provides reporting to Prometheus metrics.
 package prometheus
 
 import (
@@ -7,6 +8,7 @@ import (
 )
 
 const (
+	hostLabel         = "host"
 	hardwareIDLabel   = "hardwareID"
 	hardwareNameLabel = "hardwareName"
 	hardwareTypeLabel = "hardwareType"
@@ -26,7 +28,7 @@ func NewStatsReporter() *StatsReporter {
 				Name: "sensor_value",
 				Help: "Sensor value",
 			},
-			[]string{hardwareIDLabel, hardwareNameLabel, hardwareTypeLabel, sensorIDLabel, sensorNameLabel, sensorTypeLabel},
+			[]string{hostLabel, hardwareIDLabel, hardwareNameLabel, hardwareTypeLabel, sensorIDLabel, sensorNameLabel, sensorTypeLabel},
 		),
 	}
 }
@@ -39,10 +41,11 @@ func (r *StatsReporter) Register() error {
 	return nil
 }
 
-func (r *StatsReporter) ReportSensorValue(value int64, hardwareID, hardwareName, hardwareType, sensorID, sensorName, sensorType string) {
+func (r *StatsReporter) ReportSensorValue(value int64, host, hardwareID, hardwareName, hardwareType, sensorID, sensorName, sensorType string) {
 	r.sensorValueGaugeVec.
 		With(
 			map[string]string{
+				hostLabel:         host,
 				hardwareIDLabel:   hardwareID,
 				hardwareNameLabel: hardwareName,
 				hardwareTypeLabel: hardwareType,

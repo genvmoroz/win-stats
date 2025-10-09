@@ -10,35 +10,28 @@ import (
 	"github.com/hashicorp/go-cleanhttp"
 )
 
-type (
-	Config struct {
-		Host    string        `envconfig:"APP_PICKER_REPO_HOST" validate:"required"`
-		Timeout time.Duration `envconfig:"APP_PICKER_REPO_TIMEOUT" default:"5m"`
-	}
+type Repo struct {
+	client      *openapi.Client
+	transformer Transformer
+}
 
-	Repo struct {
-		client      *openapi.Client
-		transformer Transformer
-	}
-)
-
-func NewRepo(ctx context.Context, cfg Config) (*Repo, error) {
-	if cfg.Host == "" {
+func NewRepo(ctx context.Context, host string, timeout time.Duration) (*Repo, error) {
+	if host == "" {
 		return nil, fmt.Errorf("host is empty")
 	}
-	if cfg.Timeout <= 0 {
+	if timeout <= 0 {
 		return nil, fmt.Errorf("timeout must be greater than 0")
 	}
 
 	baseClient := cleanhttp.DefaultClient()
-	baseClient.Timeout = cfg.Timeout
+	baseClient.Timeout = timeout
 
 	opts := []openapi.ClientOption{
-		openapi.WithBaseURL(cfg.Host),
+		openapi.WithBaseURL(host),
 		openapi.WithHTTPClient(baseClient),
 	}
 
-	client, err := openapi.NewClient(cfg.Host, opts...)
+	client, err := openapi.NewClient(host, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("create client: %w", err)
 	}
@@ -46,10 +39,6 @@ func NewRepo(ctx context.Context, cfg Config) (*Repo, error) {
 	repo := &Repo{
 		client:      client,
 		transformer: Transformer{},
-	}
-
-	if err = repo.HealthCheck(ctx); err != nil {
-		return nil, fmt.Errorf("health check: %w", err)
 	}
 
 	return repo, nil
