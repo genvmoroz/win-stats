@@ -9,6 +9,7 @@ import (
 	"github.com/avast/retry-go/v4"
 	"github.com/samber/lo"
 	"go.uber.org/zap"
+	"golang.org/x/sync/singleflight"
 )
 
 type (
@@ -27,10 +28,11 @@ type (
 	}
 
 	Service struct {
-		cfg            Config
-		logger         *zap.SugaredLogger
-		statsReporter  StatsReporter
-		statsProviders map[string]StatsProvider
+		cfg               Config
+		logger            *zap.SugaredLogger
+		statsReporter     StatsReporter
+		statsProviders    map[string]StatsProvider
+		singleflightGroup singleflight.Group
 	}
 )
 
@@ -54,10 +56,11 @@ func NewService(cfg Config, logger *zap.SugaredLogger, statsReporter StatsReport
 		return nil, fmt.Errorf("collect attempts must be greater than 0")
 	}
 	return &Service{
-		cfg:            cfg,
-		logger:         logger,
-		statsReporter:  statsReporter,
-		statsProviders: statsProviders,
+		cfg:               cfg,
+		logger:            logger,
+		statsReporter:     statsReporter,
+		statsProviders:    statsProviders,
+		singleflightGroup: singleflight.Group{},
 	}, nil
 }
 
@@ -80,22 +83,40 @@ func (s *Service) Collect(ctx context.Context) error {
 
 func (s *Service) collectStatsFromAllProvidersWithRetries(ctx context.Context) {
 	for host, statsProvider := range s.statsProviders {
-		go func(host string, statsProvider StatsProvider) {
-			reqCtx, cancel := context.WithTimeout(ctx, s.cfg.CollectTimeout)
-			defer cancel()
+		select {
+		case <-ctx.Done():
+			return
+		default:
+		}
 
-			// todo: use singleflight here
-			err := retry.Do(
-				func() error {
-					return s.collectStatsFromOneProvider(reqCtx, host, statsProvider)
+		go func() {
+			_, err, _ := s.singleflightGroup.Do(
+				host,
+				func() (any, error) {
+					s.collectStatsFromOneProviderWithRetries(ctx, host, statsProvider)
+					return nil, nil
 				},
-				retry.Attempts(s.cfg.CollectAttempts),
-				retry.Context(reqCtx),
 			)
 			if err != nil {
-				s.logger.Errorf("successive retries to collect stats failed: %v", err)
+				s.logger.Errorf("unexpected error returned from singleflight: %s", err.Error())
 			}
-		}(host, statsProvider)
+		}()
+	}
+}
+
+func (s *Service) collectStatsFromOneProviderWithRetries(ctx context.Context, host string, statsProvider StatsProvider) {
+	reqCtx, cancel := context.WithTimeout(ctx, s.cfg.CollectTimeout)
+	defer cancel()
+
+	err := retry.Do(
+		func() error {
+			return s.collectStatsFromOneProvider(reqCtx, host, statsProvider)
+		},
+		retry.Attempts(s.cfg.CollectAttempts),
+		retry.Context(reqCtx),
+	)
+	if err != nil {
+		s.logger.Errorf("successive retries to collect stats failed: %v", err)
 	}
 }
 
