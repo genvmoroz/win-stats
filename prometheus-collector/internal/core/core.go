@@ -84,6 +84,7 @@ func (s *Service) collectStatsFromAllProvidersWithRetries(ctx context.Context) {
 			reqCtx, cancel := context.WithTimeout(ctx, s.cfg.CollectTimeout)
 			defer cancel()
 
+			// todo: use singleflight here
 			err := retry.Do(
 				func() error {
 					return s.collectStatsFromOneProvider(reqCtx, host, statsProvider)
@@ -98,7 +99,6 @@ func (s *Service) collectStatsFromAllProvidersWithRetries(ctx context.Context) {
 	}
 }
 
-// todo: use singleflight here
 func (s *Service) collectStatsFromOneProvider(ctx context.Context, host string, statsProvider StatsProvider) error {
 	stats, err := statsProvider.GetStats(ctx)
 	if err != nil {
