@@ -23,7 +23,7 @@ type (
 	Config struct {
 		CollectInterval time.Duration `envconfig:"APP_COLLECT_INTERVAL" default:"1s"`
 		CollectTimeout  time.Duration `envconfig:"APP_COLLECT_TIMEOUT" default:"10s"`
-		CollectAttempts uint          `envconfig:"APP_COLLECT_ATTEMPTS" default:"5"`
+		CollectAttempts uint          `envconfig:"APP_COLLECT_ATTEMPTS" default:"2"`
 	}
 
 	Service struct {
