@@ -98,6 +98,7 @@ func (s *Service) collectStatsFromAllProvidersWithRetries(ctx context.Context) {
 	}
 }
 
+// todo: use singleflight here
 func (s *Service) collectStatsFromOneProvider(ctx context.Context, host string, statsProvider StatsProvider) error {
 	stats, err := statsProvider.GetStats(ctx)
 	if err != nil {
