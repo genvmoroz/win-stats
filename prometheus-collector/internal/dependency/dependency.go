@@ -80,7 +80,7 @@ func NewStatsPickerRepos(ctx context.Context) func(injector *do.Injector) (map[s
 
 		providers := make(map[string]core.StatsProvider, len(cfg.PickerHosts))
 		for _, host := range cfg.PickerHosts {
-			repo, err := picker.NewRepo(ctx, host, cfg.CollectTimeout)
+			repo, err := picker.NewRepo(ctx, host)
 			if err != nil {
 				return nil, fmt.Errorf("init picker repo for host %s: %w", host, err)
 			}

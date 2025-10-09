@@ -3,7 +3,6 @@ package picker
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/core"
 	openapi "github.com/genvmoroz/win-stats-prometheus-collector/internal/repository/picker/generated"
@@ -15,20 +14,14 @@ type Repo struct {
 	transformer Transformer
 }
 
-func NewRepo(ctx context.Context, host string, timeout time.Duration) (*Repo, error) {
+func NewRepo(ctx context.Context, host string) (*Repo, error) {
 	if host == "" {
 		return nil, fmt.Errorf("host is empty")
 	}
-	if timeout <= 0 {
-		return nil, fmt.Errorf("timeout must be greater than 0")
-	}
-
-	baseClient := cleanhttp.DefaultClient()
-	baseClient.Timeout = timeout
 
 	opts := []openapi.ClientOption{
 		openapi.WithBaseURL(host),
-		openapi.WithHTTPClient(baseClient),
+		openapi.WithHTTPClient(cleanhttp.DefaultClient()),
 	}
 
 	client, err := openapi.NewClient(host, opts...)

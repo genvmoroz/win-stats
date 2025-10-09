@@ -89,7 +89,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareName=\"13th Gen Intel Core i7-13650HX\", hardwareType=\"CPU\", sensorType=\"Load\", sensorName=\"CPU Core Max\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareName=\"13th Gen Intel Core i7-13650HX\", hardwareType=\"CPU\", sensorType=\"Load\", sensorName=\"CPU Core Max\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -154,7 +154,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "avg(sensor_value{hardwareName=\"13th Gen Intel Core i7-13650HX\", hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed\"})",
+          "expr": "avg(sensor_value{host=\"$host\", hardwareName=\"13th Gen Intel Core i7-13650HX\", hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed\"})",
           "instant": false,
           "legendFormat": "Avg Clock",
           "range": true,
@@ -219,7 +219,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorType=\"Power\", sensorName=\"CPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorType=\"Power\", sensorName=\"CPU Package\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -292,7 +292,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareName=\"13th Gen Intel Core i7-13650HX\", hardwareType=\"CPU\", sensorType=\"Temperature\", sensorName=\"CPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareName=\"13th Gen Intel Core i7-13650HX\", hardwareType=\"CPU\", sensorType=\"Temperature\", sensorName=\"CPU Package\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -357,7 +357,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Load\", sensorName=\"GPU Core\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Load\", sensorName=\"GPU Core\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -423,7 +423,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Clock\", sensorName=\"GPU Core\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Clock\", sensorName=\"GPU Core\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -488,7 +488,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Power\", sensorName=\"GPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Power\", sensorName=\"GPU Package\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -561,7 +561,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Temperature\", sensorName=\"GPU Core\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorType=\"Temperature\", sensorName=\"GPU Core\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -668,7 +668,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorName=\"CPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorName=\"CPU Package\"}",
           "instant": false,
           "legendFormat": "CPU {{sensorName}}",
           "range": true,
@@ -680,7 +680,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "GPU {{sensorName}}",
@@ -783,7 +783,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorName=\"CPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorName=\"CPU Package\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "CPU {{sensorName}}",
@@ -797,7 +797,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorName=\"GPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorName=\"GPU Package\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "{{sensorName}}",
@@ -810,7 +810,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorName=\"CPU Package\"}) + sum(sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorName=\"GPU Package\"})",
+          "expr": "sum(sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"13th Gen Intel Core i7-13650HX\", sensorName=\"CPU Package\"}) + sum(sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4060 Laptop GPU\", sensorName=\"GPU Package\"})",
           "hide": false,
           "instant": false,
           "legendFormat": "Total",
@@ -827,7 +827,27 @@
   "schemaVersion": 41,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://192.168.50.161:8080",
+          "value": "http://192.168.50.161:8080"
+        },
+        "hide": 0,
+        "name": "host",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://192.168.50.161:8080",
+            "value": "http://192.168.50.161:8080"
+          }
+        ],
+        "query": "http://192.168.50.161:8080",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",

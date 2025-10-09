@@ -22,6 +22,7 @@ type (
 
 	Config struct {
 		CollectInterval time.Duration `envconfig:"APP_COLLECT_INTERVAL" default:"1s"`
+		CollectTimeout  time.Duration `envconfig:"APP_COLLECT_TIMEOUT" default:"10s"`
 		CollectAttempts uint          `envconfig:"APP_COLLECT_ATTEMPTS" default:"5"`
 	}
 
@@ -46,6 +47,12 @@ func NewService(cfg Config, logger *zap.SugaredLogger, statsReporter StatsReport
 	if cfg.CollectInterval <= 0 {
 		return nil, fmt.Errorf("collect interval must be greater than 0")
 	}
+	if cfg.CollectTimeout <= 0 {
+		return nil, fmt.Errorf("collect timeout must be greater than 0")
+	}
+	if cfg.CollectAttempts == 0 {
+		return nil, fmt.Errorf("collect attempts must be greater than 0")
+	}
 	return &Service{
 		cfg:            cfg,
 		logger:         logger,
@@ -58,33 +65,40 @@ func (s *Service) Collect(ctx context.Context) error {
 	ticker := time.NewTicker(s.cfg.CollectInterval)
 	defer ticker.Stop()
 
+	// collect stats immediately to avoid waiting for the first tick
+	s.collectStatsFromAllProvidersWithRetries(ctx)
+
 	for {
 		select {
 		case <-ctx.Done():
 			return nil
 		case <-ticker.C:
-			for host, statsProvider := range s.statsProviders {
-				go func(host string, statsProvider StatsProvider) {
-					reqCtx, cancel := context.WithTimeout(ctx, time.Minute)
-					defer cancel()
-
-					err := retry.Do(
-						func() error {
-							return s.collectStats(reqCtx, host, statsProvider)
-						},
-						retry.Attempts(s.cfg.CollectAttempts),
-						retry.Context(reqCtx),
-					)
-					if err != nil {
-						s.logger.Errorf("successive retries to collect stats failed: %v", err)
-					}
-				}(host, statsProvider)
-			}
+			s.collectStatsFromAllProvidersWithRetries(ctx)
 		}
 	}
 }
 
-func (s *Service) collectStats(ctx context.Context, host string, statsProvider StatsProvider) error {
+func (s *Service) collectStatsFromAllProvidersWithRetries(ctx context.Context) {
+	for host, statsProvider := range s.statsProviders {
+		go func(host string, statsProvider StatsProvider) {
+			reqCtx, cancel := context.WithTimeout(ctx, s.cfg.CollectTimeout)
+			defer cancel()
+
+			err := retry.Do(
+				func() error {
+					return s.collectStatsFromOneProvider(reqCtx, host, statsProvider)
+				},
+				retry.Attempts(s.cfg.CollectAttempts),
+				retry.Context(reqCtx),
+			)
+			if err != nil {
+				s.logger.Errorf("successive retries to collect stats failed: %v", err)
+			}
+		}(host, statsProvider)
+	}
+}
+
+func (s *Service) collectStatsFromOneProvider(ctx context.Context, host string, statsProvider StatsProvider) error {
 	stats, err := statsProvider.GetStats(ctx)
 	if err != nil {
 		return fmt.Errorf("get stats: %w", err)

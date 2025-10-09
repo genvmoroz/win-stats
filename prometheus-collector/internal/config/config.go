@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/core"
 	"github.com/genvmoroz/win-stats-prometheus-collector/internal/infrastructure"
@@ -11,9 +10,8 @@ import (
 )
 
 type Config struct {
-	LogLevel       string        `envconfig:"APP_LOG_LEVEL" default:"debug"`
-	CollectTimeout time.Duration `envconfig:"APP_COLLECT_TIMEOUT" default:"10s"`
-	PickerHosts    []string      `envconfig:"APP_PICKER_HOSTS" validate:"required"`
+	LogLevel    string   `envconfig:"APP_LOG_LEVEL" default:"debug"`
+	PickerHosts []string `envconfig:"APP_PICKER_HOSTS" validate:"required"`
 
 	CoreService core.Config
 	Infra       infrastructure.Config

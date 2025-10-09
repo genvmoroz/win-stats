@@ -89,7 +89,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareName=\"AMD Ryzen 7 9700X\", hardwareType=\"CPU\", sensorType=\"Load\", sensorName=\"CPU Core Max\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareName=\"AMD Ryzen 7 9700X\", hardwareType=\"CPU\", sensorType=\"Load\", sensorName=\"CPU Core Max\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -154,7 +154,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "avg(sensor_value{hardwareName=\"AMD Ryzen 7 9700X\", hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed\"})",
+          "expr": "avg(sensor_value{host=\"$host\", hardwareName=\"AMD Ryzen 7 9700X\", hardwareType=\"CPU\", sensorType=\"Clock\", sensorName!=\"Bus Speed\"})",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -219,7 +219,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", hardwareName=\"AMD Ryzen 7 9700X\", sensorType=\"Power\", sensorName=\"Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", hardwareName=\"AMD Ryzen 7 9700X\", sensorType=\"Power\", sensorName=\"Package\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -292,7 +292,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareName=\"AMD Ryzen 7 9700X\", hardwareType=\"CPU\", sensorType=\"Temperature\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareName=\"AMD Ryzen 7 9700X\", hardwareType=\"CPU\", sensorType=\"Temperature\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -357,7 +357,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorType=\"Load\", sensorName=\"GPU Core\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorType=\"Load\", sensorName=\"GPU Core\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -423,7 +423,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorType=\"Clock\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorType=\"Clock\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -488,7 +488,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorType=\"Power\", sensorName=\"GPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorType=\"Power\", sensorName=\"GPU Package\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -561,7 +561,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Temperature\"}",
           "instant": false,
           "legendFormat": "{{sensorName}}",
           "range": true,
@@ -668,7 +668,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"AMD Ryzen 7 9700X\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"AMD Ryzen 7 9700X\"}",
           "instant": false,
           "legendFormat": "CPU {{sensorName}}",
           "range": true,
@@ -680,7 +680,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "{{sensorName}}",
@@ -783,7 +783,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName=\"Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName=\"Package\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "CPU {{sensorName}}",
@@ -797,7 +797,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName=\"GPU Package\"}",
+          "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName=\"GPU Package\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "{{sensorName}}",
@@ -810,7 +810,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName=\"Package\"}) + sum(sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName=\"GPU Package\"})",
+          "expr": "sum(sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName=\"Package\"}) + sum(sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName=\"GPU Package\"})",
           "hide": false,
           "instant": false,
           "legendFormat": "Total",
@@ -921,7 +921,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Load\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName!=\"CPU Total\", sensorName!=\"CPU Core Max\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Load\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName!=\"CPU Total\", sensorName!=\"CPU Core Max\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1024,7 +1024,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"AMD Ryzen 7 9700X\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Temperature\", hardwareName=\"AMD Ryzen 7 9700X\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1128,7 +1128,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Clock\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName!=\"Bus Speed\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Clock\", hardwareName=\"AMD Ryzen 7 9700X\", sensorName!=\"Bus Speed\"}",
               "format": "time_series",
               "instant": false,
               "legendFormat": "{{sensorName}}",
@@ -1228,7 +1228,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"CPU\", sensorType=\"Power\", hardwareName=\"AMD Ryzen 7 9700X\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1341,7 +1341,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Load\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Load\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1440,7 +1440,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1538,7 +1538,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Power\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Power\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1636,7 +1636,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Clock\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Clock\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1734,7 +1734,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"SmallData\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName!=\"GPU Memory Free\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"SmallData\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\", sensorName!=\"GPU Memory Free\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1832,7 +1832,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Throughput\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Throughput\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -1930,7 +1930,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Fan\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Fan\", hardwareName=\"NVIDIA GeForce RTX 4070 SUPER\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2028,7 +2028,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Control\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Control\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2141,7 +2141,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", hardwareName=\"AMD Radeon(TM) Graphics\", sensorType=\"Load\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", hardwareName=\"AMD Radeon(TM) Graphics\", sensorType=\"Load\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2240,7 +2240,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Temperature\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2338,7 +2338,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Power\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2436,7 +2436,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Clock\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Clock\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2534,7 +2534,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"SmallData\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"SmallData\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2632,7 +2632,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"GPU\", sensorType=\"Voltage\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"GPU\", sensorType=\"Voltage\", hardwareName=\"AMD Radeon(TM) Graphics\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2746,7 +2746,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Load\", hardwareName=\"Ethernet\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Load\", hardwareName=\"Ethernet\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2844,7 +2844,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Data\", hardwareName=\"Ethernet\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Data\", hardwareName=\"Ethernet\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -2942,7 +2942,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Throughput\",hardwareName=\"Ethernet\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Throughput\",hardwareName=\"Ethernet\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3055,7 +3055,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Load\", hardwareName=\"WiFi 2\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Load\", hardwareName=\"WiFi 2\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3154,7 +3154,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Data\", hardwareName=\"WiFi 2\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Data\", hardwareName=\"WiFi 2\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3248,7 +3248,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Throughput\",hardwareName=\"WiFi 2\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Throughput\",hardwareName=\"WiFi 2\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3361,7 +3361,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Load\", hardwareName=\"Bluetooth Network Connection\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Load\", hardwareName=\"Bluetooth Network Connection\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3460,7 +3460,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Data\", hardwareName=\"Bluetooth Network Connection\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Data\", hardwareName=\"Bluetooth Network Connection\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3558,7 +3558,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Network\", sensorType=\"Throughput\",hardwareName=\"Bluetooth Network Connection\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Network\", sensorType=\"Throughput\",hardwareName=\"Bluetooth Network Connection\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3671,7 +3671,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Memory\", sensorType=\"Load\", hardwareName=\"Generic Memory\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Memory\", sensorType=\"Load\", hardwareName=\"Generic Memory\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3769,7 +3769,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Memory\", sensorType=\"Data\", hardwareName=\"Generic Memory\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Memory\", sensorType=\"Data\", hardwareName=\"Generic Memory\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3882,7 +3882,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Load\", hardwareName=\"KINGSTON SKC3000S1024G\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Load\", hardwareName=\"KINGSTON SKC3000S1024G\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -3981,7 +3981,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Temperature\", hardwareName=\"KINGSTON SKC3000S1024G\", sensorName=\"Temperature\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Temperature\", hardwareName=\"KINGSTON SKC3000S1024G\", sensorName=\"Temperature\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4079,7 +4079,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Data\", hardwareName=\"KINGSTON SKC3000S1024G\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Data\", hardwareName=\"KINGSTON SKC3000S1024G\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4177,7 +4177,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Throughput\", hardwareName=\"KINGSTON SKC3000S1024G\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Throughput\", hardwareName=\"KINGSTON SKC3000S1024G\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4290,7 +4290,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Load\", hardwareName=\"KINGSTON SKC3000D2048G\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Load\", hardwareName=\"KINGSTON SKC3000D2048G\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4389,7 +4389,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Temperature\", hardwareName=\"KINGSTON SKC3000D2048G\", sensorName=\"Temperature\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Temperature\", hardwareName=\"KINGSTON SKC3000D2048G\", sensorName=\"Temperature\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4487,7 +4487,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Data\", hardwareName=\"KINGSTON SKC3000D2048G\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Data\", hardwareName=\"KINGSTON SKC3000D2048G\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4585,7 +4585,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"Storage\", sensorType=\"Throughput\", hardwareName=\"KINGSTON SKC3000D2048G\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"Storage\", sensorType=\"Throughput\", hardwareName=\"KINGSTON SKC3000D2048G\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4699,7 +4699,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Control\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Control\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4797,7 +4797,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Temperature\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Temperature\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4895,7 +4895,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Voltage\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Voltage\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -4993,7 +4993,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "editorMode": "code",
-              "expr": "sensor_value{hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Fan\"}",
+              "expr": "sensor_value{host=\"$host\", hardwareType=\"SuperIO\", hardwareName=\"Nuvoton NCT6799D\", sensorType=\"Fan\"}",
               "instant": false,
               "legendFormat": "{{sensorName}}",
               "range": true,
@@ -5013,7 +5013,27 @@
   "schemaVersion": 41,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "http://host.docker.internal:8080",
+          "value": "http://host.docker.internal:8080"
+        },
+        "hide": 0,
+        "name": "host",
+        "options": [
+          {
+            "selected": true,
+            "text": "http://host.docker.internal:8080",
+            "value": "http://host.docker.internal:8080"
+          }
+        ],
+        "query": "http://host.docker.internal:8080",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
