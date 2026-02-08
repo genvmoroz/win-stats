@@ -5,12 +5,11 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"time"
 
 	"github.com/labstack/echo-contrib/echoprometheus"
 	"github.com/labstack/echo-contrib/pprof"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v5"
+	"github.com/labstack/echo/v5/middleware"
 	"go.uber.org/zap"
 )
 
@@ -50,7 +49,7 @@ func NewServer(cfg Config, logger *zap.SugaredLogger) (*Server, error) {
 	server.echo.GET("/metrics", echoprometheus.NewHandler())
 	pprof.Register(server.echo)
 
-	server.echo.Use(middleware.Logger())
+	server.echo.Use(middleware.RequestLogger())
 
 	return server, nil
 }
@@ -58,27 +57,6 @@ func NewServer(cfg Config, logger *zap.SugaredLogger) (*Server, error) {
 // Run starts the server and listens for incoming requests.
 // The server will be stopped when the context is canceled.
 func (s *Server) Run(ctx context.Context) error {
-	errChan := make(chan error, 1)
-	go func(ch chan error) {
-		s.logger.Debug("starting infra http server")
-		ch <- s.echo.Start(fmt.Sprintf(":%d", s.cfg.ServerPort))
-	}(errChan)
-
-	select {
-	case <-ctx.Done():
-	case err := <-errChan:
-		return err
-	}
-
-	const shutdownTimeout = 2 * time.Second
-
-	timeout, cancel := context.WithTimeout(context.Background(), shutdownTimeout) //nolint:contextcheck // false-positive: https://github.com/kkHAIKE/contextcheck/issues/2
-	defer cancel()
-
-	if err := s.echo.Shutdown(timeout); err != nil {
-		return fmt.Errorf("shutdown infra http server: %w", err)
-	}
-	s.logger.Debug("infra http server stopped")
-
-	return nil
+	startCfg := echo.StartConfig{Address: fmt.Sprintf(":%d", s.cfg.ServerPort)}
+	return startCfg.Start(ctx, s.echo)
 }
