@@ -105,6 +105,8 @@ func (s *Service) collectStatsFromAllProvidersWithRetries(ctx context.Context) {
 }
 
 func (s *Service) collectStatsFromOneProviderWithRetries(ctx context.Context, host string, statsProvider StatsProvider) {
+	start := time.Now()
+
 	reqCtx, cancel := context.WithTimeout(ctx, s.cfg.CollectTimeout)
 	defer cancel()
 
@@ -116,7 +118,10 @@ func (s *Service) collectStatsFromOneProviderWithRetries(ctx context.Context, ho
 		retry.Context(reqCtx),
 	)
 	if err != nil {
-		s.logger.Errorf("successive retries to collect stats failed: %v", err)
+		s.logger.With(
+			"host", host,
+			"duration", time.Since(start),
+		).Errorf("successive retries to collect stats failed: %v", err)
 	}
 }
 
